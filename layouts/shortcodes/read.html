@@ -1,0 +1,3 @@
+{{- $name := ((.Get 0) | default "") -}}
+{{- $file := (.Page.Resources.GetMatch $name) -}}
+{{- $file.Content -}}

@@ -1,0 +1,58 @@
+{{ $token := ($.Site.Params.api.github.token | base64Decode) }}
+{{ $url := "https://api.github.com" }}
+{{ $users := (split (.Get 0) "|") }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div class="row row-cols-1 row-cols-lg-2 g-3">
+    {{ range $users }}
+    {{ $user := getJSON $url "/users/" . "?access_token=" $token }}
+
+    <div class="col">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-md-4 p-1">
+            <a class="d-inline-block" href="{{ $user.html_url }}" target="_blank" rel="noopener nofollow">
+              <img src="{{ $user.avatar_url }}" class="card-img" alt="{{ $user.name | default $user.login }}"/>
+            </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body h-100">
+              <div class="d-flex flex-column h-100">
+                <div class="flex-shrink-0">
+                  <h5 class="card-title">
+                    <a href="{{ $user.html_url }}" target="_blank" rel="noopener nofollow">{{ $user.name | default $user.login }}</a>
+                  </h5>
+                  <p class="card-text">{{ $user.bio | plainify }}</p>
+                </div>
+                <div class="mt-auto">
+                  <ul class="list-inline m-0 mt-3">
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $user.html_url }}?tab=repositories" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-book fa-fw me-1"></i>
+                        {{ $user.public_repos }}
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $user.html_url }}?tab=followers" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-user-friends fa-fw me-1"></i>
+                        {{ $user.followers }}
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $user.html_url }}?tab=following" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-user-check fa-fw me-1"></i>
+                        {{ $user.following }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ end }}
+  </div>
+</div>

@@ -1,0 +1,259 @@
+{{ if .IsNamedParams }}
+
+{{ $wallet := ((.Get "wallet") | default "") }}
+{{ $paypal := ((.Get "paypal") | default "") }}
+{{ $patreon := ((.Get "patreon") | default "") }}
+{{ $liberapay := ((.Get "liberapay") | default "") }}
+{{ $kofi := ((.Get "ko-fi") | default "") }}
+{{ $buymeacoffee := ((.Get "buymeacoffee") | default "") }}
+
+{{ $btc := ((.Get "btc") | default "") }}
+{{ $eth := ((.Get "eth") | default "") }}
+{{ $xmr := ((.Get "xmr") | default "") }}
+
+{{ $usd := ((.Get "usd") | default "") }}
+{{ $eur := ((.Get "eur") | default "") }}
+{{ $rub := ((.Get "rub") | default "") }}
+
+{{ $size := "150" }}
+
+<div class="shortcode shortcode-form shortcode-{{ .Name }} mb-3">
+  <div class="row row-cols-1 g-3">
+    <!-- yooMoney -->
+    {{ if ($wallet) }}
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">{{ i18n "form.donate.yooMoney" }}</h5>
+        <div class="card-body">
+          <form method="post" action="https://yoomoney.ru/quickpay/confirm.xml">
+            <input type="hidden" name="receiver" value="{{ $wallet }}"/>
+            <input type="hidden" name="formcomment" value="Donation Form"/>
+            <input type="hidden" name="short-dest" value="Donation Form"/>
+            <input type="hidden" name="quickpay-form" value="donate"/>
+            <div class="row row-cols-1 row-cols-lg-2 g-3">
+              <div class="col">
+                <div class="row row-cols-1 g-3">
+                  <div class="col">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-coffee fa-fw"></i></span>
+                      <input class="form-control" type="text" name="targets" placeholder='{{ i18n "form.donate.targets" }}' required/>
+                    </div>
+                    <small class="form-text text-muted">{{ i18n "form.donate.targets_help" }}</small>
+                  </div>
+                  <div class="col">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+                      <input class="form-control" type="number" name="sum" value="100" min="1"/>
+                    </div>
+                    <small class="form-text text-muted">{{ i18n "form.donate.sum_help" }}</small>
+                  </div>
+                  <div class="col">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                      <select class="form-select" name="paymentType">
+                        <option value="AC">{{ i18n "form.donate.card" }}</option>
+                        <option value="PC">{{ i18n "form.donate.yooMoney" }}</option>
+                        <option value="MC">{{ i18n "form.donate.mobile_phone" }}</option>
+                      </select>
+                    </div>
+                    <small class="form-text">{{ i18n "form.donate.payment_type_help" }}</small>
+                  </div>
+                  <div class="col">
+                    <textarea class="form-control" name="comment" rows="2" maxlength="200" placeholder='{{ i18n "form.donate.comment_placeholder" }}'></textarea>
+                    <small class="form-text">{{ i18n "form.donate.comment_help" }}</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row row-cols-1 g-3">
+                  <div class="col">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="need-fio" id="ya-need-fio"/>
+                      <label class="form-check-label" for="ya-need-fio">{{ i18n "form.donate.name" }}</label>
+                      <div class="form-text">{{ i18n "form.donate.name_help" }}</div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="need-email" id="ya-need-email"/>
+                      <label class="form-check-label" for="ya-need-email">{{ i18n "form.donate.email" }}</label>
+                      <div class="form-text">{{ i18n "form.donate.email_help" }}</div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="need-phone" id="ya-need-phone"/>
+                      <label class="form-check-label" for="ya-need-phone">{{ i18n "form.donate.phone" }}</label>
+                      <div class="form-text">{{ i18n "form.donate.phone_help" }}</div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="need-address" id="ya-need-address"/>
+                      <label class="form-check-label" for="ya-need-address">{{ i18n "form.donate.address" }}</label>
+                      <div class="form-text">{{ i18n "form.donate.address_help" }}</div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="d-grid">
+                      <button class="btn btn-primary is-label" type="submit">
+                        <i class="fas fa-donate fa-fw me-2"></i>{{ i18n "form.donate.submit" }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    <!-- / yooMoney -->
+
+    <!-- bank-card -->
+    {{ if (or ($usd) ($eur) ($rub)) }}
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">{{ i18n "form.donate.cards" }}</h5>
+        <div class="card-body">
+          <div class="row g-3">
+            {{ if ($usd) }}
+            <div class="col-lg">
+              <div class="input-group">
+                <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $usd }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text"><i class="fas fa-dollar-sign fa-fw"></i></span>
+              </div>
+            </div>
+            {{ end }}
+            {{ if ($eur) }}
+            <div class="col-lg">
+              <div class="input-group">
+                <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $eur }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text"><i class="fas fa-euro-sign fa-fw"></i></span>
+              </div>
+            </div>
+            {{ end }}
+            {{ if ($rub) }}
+            <div class="col-lg">
+              <div class="input-group">
+                <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $rub }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    <!-- / bank-card -->
+
+    <!-- services -->
+    {{ if (or ($paypal) ($patreon) ($liberapay) ($kofi) ($buymeacoffee)) }}
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">{{ i18n "form.donate.services" }}</h5>
+        <div class="card-body">
+          <div class="row g-3 text-center">
+            {{ if ($paypal) }}
+            <div class="col-lg">
+              <h5 class="text-uppercase">{{ i18n "form.donate.paypal" }}</h5>
+              <a title='{{ i18n "form.donate.paypal" }}' class="btn btn-secondary btn-lg btn-social d-block" href="https://paypal.me/{{ $paypal }}" target="_blank" rel="noopener nofollow" role="button"><i class="fab fa-paypal fa-fw"></i></a>
+            </div>
+            {{ end }}
+            {{ if ($patreon) }}
+            <div class="col-lg">
+              <h5 class="text-uppercase">{{ i18n "form.donate.patreon" }}</h5>
+              <a title='{{ i18n "form.donate.patreon" }}' class="btn btn-secondary btn-lg btn-social d-block" href="https://patreon.com/{{ $patreon }}" target="_blank" rel="noopener nofollow" role="button"><i class="fab fa-patreon fa-fw"></i></a>
+            </div>
+            {{ end }}
+            {{ if ($liberapay) }}
+            <div class="col-lg">
+              <h5 class="text-uppercase">{{ i18n "form.donate.liberapay" }}</h5>
+              <a title='{{ i18n "form.donate.liberapay" }}' class="btn btn-secondary btn-lg btn-social d-block" href="https://liberapay.com/{{ $liberapay }}" target="_blank" rel="noopener nofollow" role="button"><i class="fas fa-gift fa-fw"></i></a>
+            </div>
+            {{ end }}
+            {{ if ($kofi) }}
+            <div class="col-lg">
+              <h5 class="text-uppercase">{{ i18n "form.donate.kofi" }}</h5>
+              <a title='{{ i18n "form.donate.kofi" }}' class="btn btn-secondary btn-lg btn-social d-block" href="https://ko-fi.com/{{ $kofi }}" target="_blank" rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
+            </div>
+            {{ end }}
+            {{ if ($buymeacoffee) }}
+            <div class="col-lg">
+              <h5 class="text-uppercase">{{ i18n "form.donate.buymeacoffee" }}</h5>
+              <a title='{{ i18n "form.donate.buymeacoffee" }}' class="btn btn-secondary btn-lg btn-social d-block" href="https://buymeacoffee.com/{{ $buymeacoffee }}" target="_blank" rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    <!-- / services -->
+
+    <!-- crypto -->
+    {{ if (or ($btc) ($eth) ($xmr)) }}
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">{{ i18n "form.donate.crypto" }}</h5>
+        <div class="card-body">
+          <div class="row g-3">
+            {{ if ($btc) }}
+            <div class="col-lg">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fab fa-bitcoin fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $btc }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text">{{ i18n "form.donate.btc" }}</span>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div data-ext-fn="ext-qrcode" data-ext-text="{{ $btc }}"></div>
+              </div>
+            </div>
+            {{ end }}
+            {{ if ($eth) }}
+            <div class="col-lg">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fab fa-ethereum fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $eth }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text">{{ i18n "form.donate.eth" }}</span>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div data-ext-fn="ext-qrcode" data-ext-text="{{ $eth }}"></div>
+              </div>
+            </div>
+            {{ end }}
+            {{ if ($xmr) }}
+            <div class="col-lg">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fab fa-monero fa-fw"></i></span>
+                <input class="form-control" type="text" value="{{ $xmr }}" data-ext-fn="ext-select-all" readonly/>
+                <span class="input-group-text">{{ i18n "form.donate.xmr" }}</span>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div data-ext-fn="ext-qrcode" data-ext-text="{{ $xmr }}"></div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    <!-- / crypto -->
+
+  </div>
+</div>
+
+{{ else }}
+
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">[ERROR] {{ .Name | humanize }}</h4>
+  <p>Please provide named Parameters.</p>
+</div>
+
+{{ end }}

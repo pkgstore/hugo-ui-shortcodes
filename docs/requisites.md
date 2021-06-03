@@ -1,0 +1,3 @@
+```
+{{< requisites "[URL.JSON]" "[TYPE]" >}}
+```

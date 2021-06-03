@@ -1,0 +1,4 @@
+{{ $pack := ((.Get 0) | default "") }}
+{{ $icon := ((.Get 1) | default "") }}
+
+<span class="shortcode shortcode-{{ .Name }}"><i class="{{ $pack }} fa-{{ $icon }} fa-fw me-1"></i></span>

@@ -1,0 +1,52 @@
+{{ if .IsNamedParams }}
+
+{{ $lat := ((.Get "lat") | default "51.505") }}
+{{ $lon := ((.Get "lon") | default "-0.09") }}
+{{ $zoom := ((.Get "zoom") | default "13") }}
+
+{{ $mLat := ((.Get "mLat") | default "") }}
+{{ $mLon := ((.Get "mLon") | default "") }}
+{{ $mTxt := ((.Get "mTxt") | default "") }}
+
+{{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
+{{ $fn := ((printf "sc_diagram_%s" $id) | safeJS) }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div id="sc-map-{{ $id }}" class="rounded ratio ratio-16x9 ext-map"
+       data-map-lat="{{ $lat }}"
+       data-map-lon="{{ $lon }}"
+       data-map-zoom="{{ $zoom }}"
+       data-map-marker-lat="{{ $mLat }}"
+       data-map-marker-lon="{{ $mLon }}"
+       data-map-marker-txt="{{ $mTxt }}"></div>
+</div>
+
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.min.css" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.min.js" onload="{{ $fn }}();" crossorigin="anonymous" async></script>
+
+<script>
+  function {{ $fn }}() {
+    let $map, $marker;
+    const $el = document.getElementById('sc-map-' + '{{ $id }}');
+    const $data = $el.dataset;
+
+    $map = L.map($el, {
+      preferCanvas: true,
+      attributionControl: false,
+      zoomControl: false
+    }).setView([$data.mapLat, $data.mapLon], $data.mapZoom);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo($map);
+
+    if ($data.mapMarkerLat && $data.mapMarkerLon) $marker = L.marker([$data.mapMarkerLat, $data.mapMarkerLon]).addTo($map);
+    if ($data.mapMarkerTxt) $marker.bindPopup($data.mapMarkerTxt);
+  }
+</script>
+
+{{ else }}
+
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">[ERROR] {{ .Name | humanize }}</h4>
+  <p>Please provide named Parameters.</p>
+</div>
+
+{{ end }}

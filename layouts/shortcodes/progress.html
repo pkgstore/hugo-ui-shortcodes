@@ -1,0 +1,10 @@
+{{ $size := ((.Get 0) | default "10") }}
+{{ $type := ((.Get 1) | default "primary") }}
+
+{{ if (gt $size 100) }}{{ $size = "100" }}{{ end }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div class="progress">
+    <div class="progress-bar bg-{{ $type }}" role="progressbar" style="width: {{ $size }}%;" aria-valuenow="{{ $size }}" aria-valuemin="0" aria-valuemax="100">{{ $size }}%</div>
+  </div>
+</div>

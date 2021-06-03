@@ -1,0 +1,272 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# Contact Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.contact.name]
+other = "Имя"
+
+[form.contact.email]
+other = "Email"
+
+[form.contact.phone]
+other = "Телефон"
+
+[form.contact.message_placeholder]
+other = "Введите сообщение..."
+
+[form.contact.submit]
+other = "Отправить"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Donation Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.donate.targets]
+other = "Назначение перевода..."
+
+[form.donate.targets_help]
+other = "Укажите назначение перевода."
+
+[form.donate.sum_help]
+other = "Укажите сумму."
+
+[form.donate.card]
+other = "Банковская карта"
+
+[form.donate.yooMoney]
+other = "ЮMoney"
+
+[form.donate.mobile_phone]
+other = "Мобильный телефон"
+
+[form.donate.payment_type_help]
+other = "Выберите способ перевода."
+
+[form.donate.comment_placeholder]
+other = "Введите комментарий (если имеется)..."
+
+[form.donate.comment_help]
+other = "Введите сопроводительный комментарий (не более 200 символов)."
+
+[form.donate.name]
+other = "ФИО"
+
+[form.donate.name_help]
+other = "Отметьте, если хотите указать ФИО отправителя."
+
+[form.donate.email]
+other = "E-mail"
+
+[form.donate.email_help]
+other = "Отметьте, если хотите указать электронную почту отправителя."
+
+[form.donate.phone]
+other = "Телефон"
+
+[form.donate.phone_help]
+other = "Отметьте, если хотите указать телефон отправителя."
+
+[form.donate.address]
+other = "Адрес"
+
+[form.donate.address_help]
+other = "Отметьте, если хотите указать адрес отправителя."
+
+[form.donate.paypal]
+other = "PayPal"
+
+[form.donate.patreon]
+other = "Patreon"
+
+[form.donate.liberapay]
+other = "Liberapay"
+
+[form.donate.kofi]
+other = "Ko-fi"
+
+[form.donate.buymeacoffee]
+other = "Buy Me a Coffee"
+
+[form.donate.submit]
+other = "Перевести"
+
+[form.donate.btc]
+other = "BTC"
+
+[form.donate.eth]
+other = "ETH"
+
+[form.donate.xmr]
+other = "XMR"
+
+[form.donate.cards]
+other = "Банковские карты"
+
+[form.donate.crypto]
+other = "Crypto"
+
+[form.donate.services]
+other = "Сервисы"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Requisites
+# ----------------------------------------------------------------------------------------------------------------------
+
+[requisites.organization.title_general]
+other = "Основные реквизиты"
+
+[requisites.organization.title_codes]
+other = "Коды организации"
+
+[requisites.organization.title_bank]
+other = "Банк организации"
+
+[requisites.organization.name_full]
+other = "Полное наименование"
+
+[requisites.organization.name_short]
+other = "Сокращённое наименование"
+
+[requisites.organization.address_legal]
+other = "Юридический адрес"
+
+[requisites.organization.address_location]
+other = "Адрес местонахождения"
+
+[requisites.organization.address_mailing]
+other = "Почтовый адрес"
+
+[requisites.organization.ogrn]
+other = "ОГРН"
+
+[requisites.organization.inn]
+other = "ИНН"
+
+[requisites.organization.kpp]
+other = "КПП"
+
+[requisites.organization.email]
+other = "E-mail"
+
+[requisites.organization.phone]
+other = "Телефон"
+
+[requisites.organization.site]
+other = "Сайт"
+
+[requisites.organization.director]
+other = "Руководитель"
+
+[requisites.organization.accountant]
+other = "Главный бухгалтер"
+
+[requisites.organization.accountant_deputy]
+other = "Заместители главного бухгалтера"
+
+[requisites.organization.okpo]
+other = "ОКПО"
+
+[requisites.organization.oktmo]
+other = "ОКТМО"
+
+[requisites.organization.okved]
+other = "ОКВЭД"
+
+[requisites.organization.okogu]
+other = "ОКОГУ"
+
+[requisites.organization.okfs]
+other = "ОКФС"
+
+[requisites.organization.okopf]
+other = "ОКОПФ"
+
+[requisites.organization.okato]
+other = "ОКАТО"
+
+[requisites.organization.bank]
+other = "Банк"
+
+[requisites.organization.bic]
+other = "БИК"
+
+[requisites.organization.account_current]
+other = "Расчётный счёт"
+
+[requisites.organization.account_correspondent]
+other = "Корреспондентский счёт"
+
+[requisites.bank.account.usd.currency]
+other = "USD"
+
+[requisites.bank.account.usd.beneficiary_name]
+other = "Beneficiary Name"
+
+[requisites.bank.account.usd.beneficiary_account]
+other = "Beneficiary Account"
+
+[requisites.bank.account.usd.beneficiary_bank]
+other = "Beneficiary Bank"
+
+[requisites.bank.account.usd.swift]
+other = "SWIFT"
+
+[requisites.bank.account.usd.correspondent_bank]
+other = "Correspondent Bank"
+
+[requisites.bank.account.usd.correspondent_swift]
+other = "Correspondent SWIFT"
+
+[requisites.bank.account.usd.target]
+other = "Purpose of Payment"
+
+[requisites.bank.account.eur.currency]
+other = "EUR"
+
+[requisites.bank.account.eur.beneficiary_name]
+other = "Beneficiary Name"
+
+[requisites.bank.account.eur.beneficiary_account]
+other = "Beneficiary Account"
+
+[requisites.bank.account.eur.beneficiary_bank]
+other = "Beneficiary Bank"
+
+[requisites.bank.account.eur.swift]
+other = "SWIFT"
+
+[requisites.bank.account.eur.correspondent_bank]
+other = "Correspondent Bank"
+
+[requisites.bank.account.eur.correspondent_swift]
+other = "Correspondent SWIFT"
+
+[requisites.bank.account.eur.target]
+other = "Purpose of Payment"
+
+[requisites.bank.account.rub.currency]
+other = "RUB"
+
+[requisites.bank.account.rub.beneficiary_name]
+other = "Получатель"
+
+[requisites.bank.account.rub.beneficiary_account]
+other = "Счёт получателя"
+
+[requisites.bank.account.rub.beneficiary_bank]
+other = "Банк получателя"
+
+[requisites.bank.account.rub.bic]
+other = "БИК"
+
+[requisites.bank.account.rub.inn]
+other = "ИНН"
+
+[requisites.bank.account.rub.kpp]
+other = "КПП"
+
+[requisites.bank.account.rub.correspondent_account]
+other = "Корреспондентский счёт"
+
+[requisites.bank.account.rub.target]
+other = "Назначение платежа"

@@ -1,0 +1,69 @@
+{{ $token := ($.Site.Params.api.github.token | base64Decode) }}
+{{ $url := "https://api.github.com" }}
+{{ $repos := (split (.Get 0) "|") }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div class="row row-cols-1 row-cols-lg-2 g-3">
+    {{ range $repos }}
+    {{ $repo := getJSON $url "/repos/" . "?access_token=" $token }}
+    {{ $owner := getJSON $repo.owner.url "?access_token=" $token }}
+
+    <div class="col">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-md-4 p-1">
+            <a class="d-inline-block" href="{{ $repo.html_url }}" target="_blank" rel="noopener nofollow">
+              <img src="{{ $repo.owner.avatar_url }}" class="card-img" alt="{{ $repo.name }}"/>
+            </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body h-100">
+              <div class="d-flex flex-column h-100">
+                <div class="flex-shrink-0">
+                  <h5 class="card-title">
+                    <a href="{{ $repo.html_url }}" target="_blank" rel="noopener nofollow">{{ $repo.name }}</a>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ $owner.name | default $owner.login }}</h6>
+                  <p class="card-text">{{ $repo.description | plainify }}</p>
+                </div>
+                <div class="mt-auto">
+                  <ul class="list-inline m-0 mt-3">
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $repo.html_url }}/watchers" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-eye fa-fw me-1"></i>
+                        {{ $repo.subscribers_count }}
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $repo.html_url }}/stargazers" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-star fa-fw me-1"></i>
+                        {{ $repo.stargazers_count }}
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $repo.html_url }}/network/members" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-code-branch fa-fw me-1"></i>
+                        {{ $repo.forks_count }}
+                      </a>
+                    </li>
+                    {{ if ($repo.license) }}
+                    {{ $license := getJSON $repo.license.url "?access_token=" $token }}
+                    <li class="list-inline-item">
+                      <a class="btn btn-light btn-sm text-muted" href="{{ $license.html_url }}" target="_blank" rel="noopener nofollow" role="button">
+                        <i class="fas fa-copyright fa-fw me-1"></i>
+                        {{ $license.spdx_id }}
+                      </a>
+                    </li>
+                    {{ end }}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ end }}
+  </div>
+</div>

@@ -1,0 +1,37 @@
+{{ $images := ((split (.Get 0) "|") | default "") }}
+{{ $size := ((.Get 1) | default "50vh") }}
+{{ $id := (printf "sc-carousel-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
+
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div class="row row-cols-1 row-cols-lg-1 g-3">
+    <div class="col">
+      <div id="{{ $id }}" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          {{ range $key, $value := $images }}
+          <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+          {{ end }}
+        </div>
+        <div class="carousel-inner rounded">
+          {{ range $key, $value := $images }}
+          <div class='carousel-item {{ if eq $key 0 }}active{{ end }}' style="height: {{ $size }};">
+            <img class="d-block w-100 h-100" style="object-fit: contain;" src="{{ $value }}" alt="Image"/>
+          </div>
+          {{ end }}
+        </div>
+        <!-- buttons-control -->
+        {{ if ((len $images) | lt 1) }}
+        <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">{{ i18n "previous" }}</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#{{ $id }}" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">{{ i18n "next" }}</span>
+        </button>
+        {{ end }}
+        <!-- / buttons-control -->
+      </div>
+    </div>
+  </div>
+</div>

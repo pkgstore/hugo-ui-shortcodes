@@ -1,0 +1,272 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# Contact Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.contact.name]
+other = "Name"
+
+[form.contact.email]
+other = "Email"
+
+[form.contact.phone]
+other = "Phone"
+
+[form.contact.message_placeholder]
+other = "Enter message..."
+
+[form.contact.submit]
+other = "Submit"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Donation Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.donate.targets]
+other = "Target transfer..."
+
+[form.donate.targets_help]
+other = "Enter target transfer."
+
+[form.donate.sum_help]
+other = "Set amount."
+
+[form.donate.card]
+other = "Bank Card"
+
+[form.donate.yooMoney]
+other = "YooMoney"
+
+[form.donate.mobile_phone]
+other = "Mobile Phone"
+
+[form.donate.payment_type_help]
+other = "Select a transfer method."
+
+[form.donate.comment_placeholder]
+other = "Enter a comment (if available)..."
+
+[form.donate.comment_help]
+other = "Enter an accompanying comment (max 200 characters)."
+
+[form.donate.name]
+other = "Name"
+
+[form.donate.name_help]
+other = "Check if you want to specify name of sender."
+
+[form.donate.email]
+other = "E-mail"
+
+[form.donate.email_help]
+other = "Check if you want to specify sender's e-mail."
+
+[form.donate.phone]
+other = "Phone"
+
+[form.donate.phone_help]
+other = "Check if you want to specify sender's phone number."
+
+[form.donate.address]
+other = "Address"
+
+[form.donate.address_help]
+other = "Check if you want to specify sender address."
+
+[form.donate.paypal]
+other = "PayPal"
+
+[form.donate.patreon]
+other = "Patreon"
+
+[form.donate.liberapay]
+other = "Liberapay"
+
+[form.donate.kofi]
+other = "Ko-fi"
+
+[form.donate.buymeacoffee]
+other = "Buy Me a Coffee"
+
+[form.donate.submit]
+other = "Transfer"
+
+[form.donate.btc]
+other = "BTC"
+
+[form.donate.eth]
+other = "ETH"
+
+[form.donate.xmr]
+other = "XMR"
+
+[form.donate.cards]
+other = "Bank Cards"
+
+[form.donate.crypto]
+other = "Crypto"
+
+[form.donate.services]
+other = "Services"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Requisites
+# ----------------------------------------------------------------------------------------------------------------------
+
+[requisites.organization.title_general]
+other = "General Requisites"
+
+[requisites.organization.title_codes]
+other = "Organization Codes"
+
+[requisites.organization.title_bank]
+other = "Organization Bank"
+
+[requisites.organization.name_full]
+other = "Full Name"
+
+[requisites.organization.name_short]
+other = "Short Name"
+
+[requisites.organization.address_legal]
+other = "Legal Address"
+
+[requisites.organization.address_location]
+other = "Location"
+
+[requisites.organization.address_mailing]
+other = "Mailing Address"
+
+[requisites.organization.ogrn]
+other = "OGRN"
+
+[requisites.organization.inn]
+other = "INN"
+
+[requisites.organization.kpp]
+other = "KPP"
+
+[requisites.organization.email]
+other = "E-mail"
+
+[requisites.organization.phone]
+other = "Phone"
+
+[requisites.organization.site]
+other = "Site"
+
+[requisites.organization.director]
+other = "Director"
+
+[requisites.organization.accountant]
+other = "Accountant"
+
+[requisites.organization.accountant_deputy]
+other = "Deputy Accountant"
+
+[requisites.organization.okpo]
+other = "OKPO"
+
+[requisites.organization.oktmo]
+other = "OKTMO"
+
+[requisites.organization.okved]
+other = "OKVED"
+
+[requisites.organization.okogu]
+other = "OKOGU"
+
+[requisites.organization.okfs]
+other = "OKFS"
+
+[requisites.organization.okopf]
+other = "OKOPF"
+
+[requisites.organization.okato]
+other = "OKATO"
+
+[requisites.organization.bank]
+other = "Bank"
+
+[requisites.organization.bic]
+other = "BIC"
+
+[requisites.organization.account_current]
+other = "Current Account"
+
+[requisites.organization.account_correspondent]
+other = "Correspondent Account"
+
+[requisites.bank.account.usd.currency]
+other = "USD"
+
+[requisites.bank.account.usd.beneficiary_name]
+other = "Beneficiary Name"
+
+[requisites.bank.account.usd.beneficiary_account]
+other = "Beneficiary Account"
+
+[requisites.bank.account.usd.beneficiary_bank]
+other = "Beneficiary Bank"
+
+[requisites.bank.account.usd.swift]
+other = "SWIFT"
+
+[requisites.bank.account.usd.correspondent_bank]
+other = "Correspondent Bank"
+
+[requisites.bank.account.usd.correspondent_swift]
+other = "Correspondent SWIFT"
+
+[requisites.bank.account.usd.target]
+other = "Purpose of Payment"
+
+[requisites.bank.account.eur.currency]
+other = "EUR"
+
+[requisites.bank.account.eur.beneficiary_name]
+other = "Beneficiary Name"
+
+[requisites.bank.account.eur.beneficiary_account]
+other = "Beneficiary Account"
+
+[requisites.bank.account.eur.beneficiary_bank]
+other = "Beneficiary Bank"
+
+[requisites.bank.account.eur.swift]
+other = "SWIFT"
+
+[requisites.bank.account.eur.correspondent_bank]
+other = "Correspondent Bank"
+
+[requisites.bank.account.eur.correspondent_swift]
+other = "Correspondent SWIFT"
+
+[requisites.bank.account.eur.target]
+other = "Purpose of Payment"
+
+[requisites.bank.account.rub.currency]
+other = "RUB"
+
+[requisites.bank.account.rub.beneficiary_name]
+other = "Beneficiary Name"
+
+[requisites.bank.account.rub.beneficiary_account]
+other = "Beneficiary Account"
+
+[requisites.bank.account.rub.beneficiary_bank]
+other = "Beneficiary Bank"
+
+[requisites.bank.account.rub.bic]
+other = "BIC"
+
+[requisites.bank.account.rub.inn]
+other = "ITN"
+
+[requisites.bank.account.rub.kpp]
+other = "IEC"
+
+[requisites.bank.account.rub.correspondent_account]
+other = "Correspondent Account"
+
+[requisites.bank.account.rub.target]
+other = "Purpose of Payment"

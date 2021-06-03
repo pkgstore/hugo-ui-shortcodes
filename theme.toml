@@ -1,0 +1,12 @@
+name = "UI Shortcodes"
+license = "MIT"
+licenselink = "https://github.com/marketplace-hugo/hugo-ui-shortcodes/blob/main/LICENSE"
+description = "WebSite User Interface"
+homepage = "https://kitsune.solar"
+tags = ["website", "responsive", "multilingual", "mobile"]
+features = ["posts", "shortcodes", "comments"]
+min_version = "0.82.0"
+
+[author]
+  name = "Kitsune Solar"
+  homepage = "https://kitsune.solar"

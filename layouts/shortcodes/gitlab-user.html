@@ -1,0 +1,92 @@
+{{ $user := ((.Get 0) | default "") }}
+{{ $token := $.Site.Params.api.gitlab.token }}
+{{ $url := "https://gitlab.com/api/v4" }}
+{{ $data := getJSON $url "/users/" $user "?access_token=" $token }}
+
+<div class="row row-cols-1 row-cols-lg-2">
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row no-gutters">
+          <div class="col-4 pr-3">
+            <img src="{{ $data.avatar_url }}" class="card-img" alt=""/>
+          </div>
+          <div class="col-8">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="fas fa-at fa-fw me-1"></i>
+                <a href="{{ $data.web_url }}" target="_blank" rel="noopener nofollow">{{ $data.name }}</a>
+              </li>
+              {{ if $data.location }}
+              <li class="list-group-item">
+                <i class="fas fa-map-marker-alt fa-fw me-1"></i>
+                {{ $data.location }}
+              </li>
+              {{ end }}
+              {{ if $data.job_title }}
+              <li class="list-group-item">
+                <i class="fas fa-briefcase fa-fw me-1"></i>
+                {{ $data.job_title }}
+              </li>
+              {{ end }}
+              {{ if $data.organization }}
+              <li class="list-group-item">
+                <i class="fas fa-building fa-fw me-1"></i>
+                {{ $data.organization }}
+              </li>
+              {{ end }}
+              {{ if $data.created_at }}
+              <li class="list-group-item">
+                <i class="fas fa-calendar-plus fa-fw me-1"></i>
+                {{ dateFormat "2006/01/02 15:04:05 MST" $data.created_at }}
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p class="card-text">{{ $data.bio }}</p>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row text-center">
+          {{ if $data.skype }}
+          <div class="col">
+            <a href="skype:{{ $data.skype }}?chat" target="_blank" rel="noopener nofollow">
+              <i class="fab fa-skype fa-fw me-1"></i>
+            </a>
+          </div>
+          {{ end }}
+          {{ if $data.linkedin }}
+          <div class="col">
+            <a href="https://linkedin.com/in/{{ $data.linkedin }}" target="_blank" rel="noopener nofollow">
+              <i class="fab fa-linkedin-in fa-fw me-1"></i>
+            </a>
+          </div>
+          {{ end }}
+          {{ if $data.twitter }}
+          <div class="col">
+            <a href="https://twitter.com/{{ $data.twitter }}" target="_blank" rel="noopener nofollow">
+              <i class="fab fa-twitter fa-fw me-1"></i>
+            </a>
+          </div>
+          {{ end }}
+          {{ if $data.website_url }}
+          <div class="col">
+            <a href="http://{{ $data.website_url }}" target="_blank" rel="noopener nofollow">
+              <i class="fas fa-globe fa-fw me-1"></i>
+            </a>
+          </div>
+          {{ end }}
+          {{ if $data.public_email }}
+          <div class="col">
+            <a href="mailto:{{ $data.public_email }}" target="_blank" rel="noopener nofollow">
+              <i class="fas fa-envelope-open-text fa-fw me-1"></i>
+            </a>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

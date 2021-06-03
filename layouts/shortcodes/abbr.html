@@ -1,0 +1,4 @@
+{{ $abbr := ((.Get 0) | default "") }}
+{{ $title := ((.Get 1) | default "") }}
+
+<span class="shortcode shortcode-{{ .Name }}"><abbr title="{{ $title }}">{{ $abbr }}</abbr></span>

@@ -1,0 +1,59 @@
+{{ $repo := ((.Get 0) | default "") }}
+{{ $token := $.Site.Params.api.gitlab.token }}
+{{ $url := "https://gitlab.com/api/v4" }}
+{{ $data := getJSON $url "/projects/" $repo "?access_token=" $token }}
+
+<div class="row row-cols-1 row-cols-lg-2">
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row no-gutters">
+          <div class="col-4 pr-3">
+            <img src='{{ $data.avatar_url | default (printf "https://gitlab.com%s" $data.namespace.avatar_url) }}' class="card-img" alt=""/>
+          </div>
+          <div class="col-8">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-truncate">
+                <i class="fas fa-at fa-fw me-1"></i>
+                <a href="{{ $data.web_url }}" target="_blank" rel="noopener nofollow">{{ $data.name }}</a>
+              </li>
+              <li class="list-group-item text-truncate">
+                <i class="fas fa-folder fa-fw me-1"></i>
+                <a href="{{ $data.namespace.web_url }}" target="_blank" rel="noopener nofollow">{{ $data.namespace.name }}</a>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <i class="fas fa-info-circle fa-fw me-1"></i>
+                    <a href="{{ $data.web_url }}/-/issues" target="_blank" rel="noopener nofollow">
+                      {{ $data.open_issues_count }}
+                    </a>
+                  </div>
+                  <div class="col">
+                    <i class="fas fa-star fa-fw me-1"></i>
+                    <a href="{{ $data.web_url }}/-/starrers" target="_blank" rel="noopener nofollow">
+                      {{ $data.star_count }}
+                    </a>
+                  </div>
+                  <div class="col">
+                    <i class="fas fa-code-branch fa-fw me-1"></i>
+                    <a href="{{ $data.web_url }}/-/forks" target="_blank" rel="noopener nofollow">
+                      {{ $data.forks_count }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-calendar-plus fa-fw me-1"></i>
+                {{ dateFormat "2006/01/02 15:04:05 MST" $data.created_at }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p class="card-text">{{ $data.description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

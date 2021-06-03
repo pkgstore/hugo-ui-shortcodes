@@ -1,0 +1,116 @@
+{{ $group := ((.Get 0) | default "") }}
+{{ $view := ((.Get 1) | default "") }}
+{{ $token := $.Site.Params.api.gitlab.token }}
+{{ $url := "https://gitlab.com/api/v4" }}
+{{ $data := getJSON $url "/groups/" $group "?access_token=" $token }}
+
+{{ $cols := "2" }}
+{{ if (eq $view "projects") }}{{ $cols = "1" }}{{ end }}
+
+<div class="row row-cols-1 row-cols-lg-{{ $cols }}">
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row no-gutters">
+          <div class="col-4 pr-3">
+            <img src="{{ $data.avatar_url }}" class="card-img" alt=""/>
+          </div>
+          <div class="col-8">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-truncate">
+                <i class="fas fa-at fa-fw me-1"></i>
+                <a href="{{ $data.web_url }}" target="_blank" rel="noopener nofollow">{{ $data.name }}</a>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <i class="fas fa-book fa-fw me-1"></i>
+                    <a href="{{ $data.web_url }}" target="_blank" rel="noopener nofollow">
+                      {{ len $data.projects }}
+                    </a>
+                  </div>
+                  <div class="col">
+                    <i class="fas fa-book-open fa-fw me-1"></i>
+                    <a href="{{ $data.web_url }}/-/shared" target="_blank" rel="noopener nofollow">
+                      {{ len $data.shared_projects }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fas fa-eye fa-fw me-1"></i>
+                {{ humanize $data.visibility }}
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-calendar-plus fa-fw me-1"></i>
+                {{ dateFormat "2006/01/02 15:04:05 MST" $data.created_at }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p class="card-text">{{ $data.description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ if (eq $view "projects") }}
+<div class="row row-cols-1 row-cols-lg-2">
+  {{ range where $data.projects ".visibility" "!=" "private" }}
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row no-gutters">
+          <div class="col-4 pr-3">
+            <img src='{{ .avatar_url | default (printf "https://gitlab.com%s" .namespace.avatar_url) }}' class="card-img" alt=""/>
+          </div>
+          <div class="col-8">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-truncate">
+                <i class="fas fa-at fa-fw me-1"></i>
+                <a href="{{ .web_url }}" target="_blank" rel="noopener nofollow">{{ .name }}</a>
+              </li>
+              <li class="list-group-item text-truncate">
+                <i class="fas fa-folder fa-fw me-1"></i>
+                <a href="{{ .namespace.web_url }}" target="_blank" rel="noopener nofollow">{{ .namespace.name }}</a>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <i class="fas fa-info-circle fa-fw me-1"></i>
+                    <a href="{{ .web_url }}/-/issues" target="_blank" rel="noopener nofollow">
+                      {{ .open_issues_count }}
+                    </a>
+                  </div>
+                  <div class="col">
+                    <i class="fas fa-star fa-fw me-1"></i>
+                    <a href="{{ .web_url }}/-/starrers" target="_blank" rel="noopener nofollow">
+                      {{ .star_count }}
+                    </a>
+                  </div>
+                  <div class="col">
+                    <i class="fas fa-code-branch fa-fw me-1"></i>
+                    <a href="{{ .web_url }}/-/forks" target="_blank" rel="noopener nofollow">
+                      {{ .forks_count }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-calendar-plus fa-fw me-1"></i>
+                {{ dateFormat "2006/01/02 15:04:05 MST" .created_at }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p class="card-text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

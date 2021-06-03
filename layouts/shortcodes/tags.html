@@ -1,0 +1,9 @@
+<div class="shortcode shortcode-{{ .Name }}">
+  <ul class="list-inline">
+    {{ range $.Site.Taxonomies.tags }}
+    <li class="list-inline-item">
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</div>

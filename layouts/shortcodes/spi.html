@@ -1,0 +1,27 @@
+{{ $text := ((.Get 0) | default "") }}
+{{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
+
+<span id="sc-spi-{{ $id }}" class="shortcode shortcode-{{ .Name }}">
+  <span class="d-inline"><i class="fas fa-question-circle fa-fw"></i></span>
+  <span class="d-none">{{ $text }}</span>
+</span>
+
+<script>
+  (function () {
+    const $id = document.getElementById('sc-spi-{{ $id }}');
+    const $icon = $id.querySelector('span:first-child').classList;
+    const $text = $id.querySelector('span:last-child').classList;
+    $id.addEventListener('click', ($e) => {
+      if ($icon.contains('d-inline')) {
+        $icon.replace('d-inline', 'd-none');
+      } else if ($icon.contains('d-none')) {
+        $icon.replace('d-none', 'd-inline');
+      }
+      if ($text.contains('d-none')) {
+        $text.replace('d-none', 'd-inline');
+      } else if ($text.contains('d-inline')) {
+        $text.replace('d-inline', 'd-none');
+      }
+    });
+  }());
+</script>
