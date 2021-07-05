@@ -1,11 +1,11 @@
-{{ $token := ($.Site.Params.api.github.token | base64Decode) }}
+{{ $token := (dict "Authorization" (printf "token %s" ($.Site.Params.api.github.token | base64Decode))) }}
 {{ $url := "https://api.github.com" }}
 {{ $users := (split (.Get 0) "|") }}
 
 <div class="shortcode shortcode-{{ .Name }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
     {{ range $users }}
-    {{ $user := getJSON $url "/users/" . "?access_token=" $token }}
+    {{ $user := getJSON $url "/users/" . $token }}
 
     <div class="col">
       <div class="card">

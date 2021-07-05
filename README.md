@@ -17,5 +17,8 @@ git submodule update --remote
 ## Uninstall
 
 ```
-git submodule deinit -f themes/ui-shortcodes && git rm -r --cached themes/ui-shortcodes && rm -rf .git/modules/themes/ui-shortcodes
+git submodule deinit -f themes/ui-shortcodes  \
+  && git rm -r --cached themes/ui-shortcodes  \
+  && rm -rf .git/modules/themes/ui-shortcodes \
+  && rm -rf themes/ui-shortcodes
 ```

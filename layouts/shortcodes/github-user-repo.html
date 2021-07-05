@@ -1,13 +1,13 @@
-{{ $token := ($.Site.Params.api.github.token | base64Decode) }}
+{{ $token := (dict "Authorization" (printf "token %s" ($.Site.Params.api.github.token | base64Decode))) }}
 {{ $url := "https://api.github.com" }}
 {{ $users_repos := (split (.Get 0) "|") }}
 
 <div class="shortcode shortcode-{{ .Name }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
     {{ range $users_repos }}
-    {{ $repos := getJSON $url "/users/" . "/repos?access_token=" $token }}
+    {{ $repos := getJSON $url "/users/" . "/repos" $token }}
     {{ range $repos }}
-    {{ $owner := getJSON .owner.url "?access_token=" $token }}
+    {{ $owner := getJSON .owner.url $token }}
 
     <div class="col">
       <div class="card">
@@ -42,7 +42,7 @@
                       </a>
                     </li>
                     {{ if .license }}
-                    {{ $license := getJSON .license.url "?access_token=" $token }}
+                    {{ $license := getJSON .license.url $token }}
                     <li class="list-inline-item">
                       <a class="btn btn-light btn-sm text-muted" href="{{ $license.html_url }}" target="_blank" rel="noopener nofollow" role="button">
                         <i class="fas fa-copyright fa-fw me-1"></i>

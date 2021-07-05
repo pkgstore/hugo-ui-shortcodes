@@ -1,13 +1,13 @@
-{{ $token := ($.Site.Params.api.github.token | base64Decode) }}
+{{ $token := (dict "Authorization" (printf "token %s" ($.Site.Params.api.github.token | base64Decode))) }}
 {{ $url := "https://api.github.com" }}
 {{ $users_orgs := (split (.Get 0) "|") }}
 
 <div class="shortcode shortcode-{{ .Name }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
     {{ range $users_orgs }}
-    {{ $orgs := getJSON $url "/users/" . "/orgs?access_token=" $token }}
+    {{ $orgs := getJSON $url "/users/" . "/orgs" $token }}
     {{ range $orgs }}
-    {{ $org := getJSON $url "/orgs/" .login }}
+    {{ $org := getJSON $url "/orgs/" .login $token }}
 
     <div class="col">
       <div class="card">
