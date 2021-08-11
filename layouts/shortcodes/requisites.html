@@ -6,7 +6,7 @@
 <div class="shortcode shortcode-{{ .Name }} mb-3">
   <div class="row row-cols-1 g-3">
 
-    <!-- organization -->
+    <!--[ organization ]-->
     {{ if (eq $type "organization") }}
     <div class="col">
       <div class="row row-cols-1 row-cols-lg-1 g-3">
@@ -156,7 +156,7 @@
             <div class="card-body">
               <div class="row row-cols-1 row-cols-lg-2 g-3">
 
-                <!-- code-okpo -->
+                <!--[ code-okpo ]-->
                 <div class="col">{{ i18n "requisites.organization.okpo" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -164,9 +164,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okpo }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okpo -->
+                <!--[ / code-okpo ]-->
 
-                <!-- code-oktmo -->
+                <!--[ code-oktmo ]-->
                 <div class="col">{{ i18n "requisites.organization.oktmo" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -174,9 +174,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.oktmo }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-oktmo -->
+                <!--[ / code-oktmo ]-->
 
-                <!-- code-okved -->
+                <!--[ code-okved ]-->
                 <div class="col">{{ i18n "requisites.organization.okved" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -184,9 +184,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okved }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okved -->
+                <!--[ / code-okved ]-->
 
-                <!-- code-okogu -->
+                <!--[ code-okogu ]-->
                 <div class="col">{{ i18n "requisites.organization.okogu" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -194,9 +194,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okogu }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okogu -->
+                <!--[ / code-okogu ]-->
 
-                <!-- code-okfs -->
+                <!--[ code-okfs ]-->
                 <div class="col">{{ i18n "requisites.organization.okfs" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -204,9 +204,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okfs }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okfs -->
+                <!--[ / code-okfs ]-->
 
-                <!-- code-okopf -->
+                <!--[ code-okopf ]-->
                 <div class="col">{{ i18n "requisites.organization.okopf" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -214,9 +214,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okopf }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okopf -->
+                <!--[ / code-okopf ]-->
 
-                <!-- code-okato -->
+                <!--[ code-okato ]-->
                 <div class="col">{{ i18n "requisites.organization.okato" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -224,7 +224,7 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okato }}" readonly/>
                   </div>
                 </div>
-                <!-- / code-okato -->
+                <!--[ / code-okato ]-->
 
               </div>
             </div>
@@ -236,7 +236,7 @@
             <div class="card-body">
               <div class="row row-cols-1 row-cols-lg-2 g-3">
 
-                <!-- bank-name -->
+                <!--[ bank-name ]-->
                 <div class="col">{{ i18n "requisites.organization.bank" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -244,9 +244,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.name }}" readonly/>
                   </div>
                 </div>
-                <!-- / bank-name -->
+                <!--[ / bank-name ]-->
 
-                <!-- bank-bic -->
+                <!--[ bank-bic ]-->
                 <div class="col">{{ i18n "requisites.organization.bic" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -254,9 +254,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.bic }}" readonly/>
                   </div>
                 </div>
-                <!-- / bank-bic -->
+                <!--[ / bank-bic ]-->
 
-                <!-- bank-account-current -->
+                <!--[ bank-account-current ]-->
                 <div class="col">{{ i18n "requisites.organization.account_current" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -264,9 +264,9 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.current }}" readonly/>
                   </div>
                 </div>
-                <!-- / bank-account-current -->
+                <!--[ / bank-account-current ]-->
 
-                <!-- bank-account-correspondent -->
+                <!--[ bank-account-correspondent ]-->
                 <div class="col">{{ i18n "requisites.organization.account_correspondent" }}</div>
                 <div class="col">
                   <div class="input-group">
@@ -274,7 +274,7 @@
                     <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.correspondent }}" readonly/>
                   </div>
                 </div>
-                <!-- / bank-account-correspondent -->
+                <!--[ / bank-account-correspondent ]-->
 
               </div>
             </div>
@@ -283,14 +283,14 @@
       </div>
     </div>
     {{ end }}
-    <!-- / organization -->
+    <!--[ / organization ]-->
 
-    <!-- bank-account -->
+    <!--[ bank-account ]-->
     {{ if (eq $type "bank-account") }}
     <div class="col">
       <div class="row row-cols-1 g-3">
 
-        <!-- usd -->
+        <!--[ usd ]-->
         {{ if ((index $data.bank $lang).account.usd.beneficiary.name) }}
         <div class="col">
           <div class="card">
@@ -360,9 +360,9 @@
           </div>
         </div>
         {{ end }}
-        <!-- / usd -->
+        <!--[ / usd ]-->
 
-        <!-- eur -->
+        <!--[ eur ]-->
         {{ if ((index $data.bank $lang).account.eur.beneficiary.name) }}
         <div class="col">
           <div class="card">
@@ -432,9 +432,9 @@
           </div>
         </div>
         {{ end }}
-        <!-- / eur -->
+        <!--[ / eur ]-->
 
-        <!-- rub -->
+        <!--[ rub ]-->
         {{ if ((index $data.bank $lang).account.rub.beneficiary.name) }}
         <div class="col">
           <div class="card">
@@ -513,12 +513,12 @@
           </div>
         </div>
         {{ end }}
-        <!-- / rub -->
+        <!--[ / rub ]-->
 
       </div>
     </div>
     {{ end }}
-    <!-- / bank-account -->
+    <!--[ / bank-account ]-->
 
   </div>
 </div>
