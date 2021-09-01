@@ -11,7 +11,7 @@ git submodule add https://github.com/pkgstore/hugo-ui-shortcodes.git themes/ui-s
 ## Update
 
 ```
-git submodule update --remote --merge
+git submodule update --recursive --remote --merge
 ```
 
 ## Uninstall
