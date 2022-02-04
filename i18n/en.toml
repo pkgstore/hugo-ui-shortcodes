@@ -72,21 +72,6 @@ other = "Address"
 [form.donate.address_help]
 other = "Check if you want to specify sender address."
 
-[form.donate.paypal]
-other = "PayPal"
-
-[form.donate.patreon]
-other = "Patreon"
-
-[form.donate.liberapay]
-other = "Liberapay"
-
-[form.donate.kofi]
-other = "Ko-fi"
-
-[form.donate.buymeacoffee]
-other = "Buy Me a Coffee"
-
 [form.donate.submit]
 other = "Transfer"
 

@@ -72,21 +72,6 @@ other = "Адрес"
 [form.donate.address_help]
 other = "Отметьте, если хотите указать адрес отправителя."
 
-[form.donate.paypal]
-other = "PayPal"
-
-[form.donate.patreon]
-other = "Patreon"
-
-[form.donate.liberapay]
-other = "Liberapay"
-
-[form.donate.kofi]
-other = "Ko-fi"
-
-[form.donate.buymeacoffee]
-other = "Buy Me a Coffee"
-
 [form.donate.submit]
 other = "Перевести"
 
