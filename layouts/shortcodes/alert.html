@@ -6,8 +6,8 @@
 {{ if (eq $type "info") }}{{ $icon = "fas fa-info" }}{{ end }}
 
 <div class="shortcode shortcode-{{ .Name }}">
-  <div class="alert alert-{{ $type }} d-flex" role="alert">
-    <div class="flex-shrink-0 align-self-center">
+  <div class="alert alert-{{ $type }} d-flex align-items-center" role="alert">
+    <div class="flex-shrink-0">
       <i class="{{ $icon }} fa-fw fa-2x"></i>
     </div>
     <div class="flex-grow-1 ms-3">
