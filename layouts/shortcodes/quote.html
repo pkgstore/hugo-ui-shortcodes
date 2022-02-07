@@ -4,7 +4,7 @@
 <div class="shortcode shortcode-{{ (.Name) }}">
   <figure>
     <blockquote class="blockquote">
-        {{ with (.Inner) }}{{ (. | ($.Page.RenderString (dict "display" "block"))) }}{{ end }}
+        {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </blockquote>
       {{ with ($author) }}
         <figcaption class="blockquote-footer">
