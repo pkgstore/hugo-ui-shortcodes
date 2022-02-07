@@ -1,14 +1,14 @@
 {{ $text := ((.Get 0) | default "") }}
 {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
 
-<span id="sc-spi-{{ $id }}" class="shortcode shortcode-{{ .Name }}">
+<span id="sc-spi-{{ ($id) }}" class="shortcode shortcode-{{ (.Name) }}">
   <span class="d-inline"><i class="fas fa-question-circle fa-fw"></i></span>
-  <span class="d-none">{{ $text }}</span>
+  <span class="d-none">{{ ($text) }}</span>
 </span>
 
 <script>
   (function () {
-    const $id = document.getElementById('sc-spi-{{ $id }}');
+    const $id = document.getElementById('sc-spi-{{ ($id) }}');
     const $icon = $id.querySelector('span:first-child').classList;
     const $text = $id.querySelector('span:last-child').classList;
     $id.addEventListener('click', ($e) => {

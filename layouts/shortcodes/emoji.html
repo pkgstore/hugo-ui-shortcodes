@@ -1,5 +1,5 @@
 {{ $id := ((.Get 0) | default "1f603") }}
 {{ $size := ((.Get 1) | default "1") }}
-{{ $style := (((printf "height: %srem; width: auto;" $size) | default "") | safeCSS) }}
+{{ $style := (((printf "height: %srem; width: auto;" ($size)) | default "") | safeCSS) }}
 
-<span class="shortcode shortcode-{{ .Name }}"><img src="https://twemoji.maxcdn.com/v/latest/svg/{{ $id }}.svg" alt="" style="{{ $style }}"/></span>
+<span class="shortcode shortcode-{{ (.Name) }}"><img src="https://twemoji.maxcdn.com/v/latest/svg/{{ ($id) }}.svg" alt="{{ ($id) }}" style="{{ ($style) }}"/></span>

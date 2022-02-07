@@ -7,517 +7,517 @@
   <div class="row row-cols-1 g-3">
 
     <!--[ organization ]-->
-    {{ if (eq $type "organization") }}
-    <div class="col">
-      <div class="row row-cols-1 row-cols-lg-1 g-3">
+      {{ if (eq $type "organization") }}
         <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.organization.title_general" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
+          <div class="row row-cols-1 row-cols-lg-1 g-3">
+            <div class="col">
+              <div class="card">
+                <h5 class="card-header">{{ i18n "requisites.organization.title_general" }}</h5>
+                <div class="card-body">
+                  <div class="row row-cols-1 row-cols-lg-2 g-3">
 
-                <div class="col">{{ i18n "requisites.organization.name_full" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-building fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).name.full }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.name_short" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-building fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).name.short }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.address_legal" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.legal }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.address_location" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.location }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.address_mailing" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.mailing }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.ogrn" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).ogrn }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.inn" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).inn }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.kpp" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).kpp }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.organization.email" }}</div>
-                <div class="col">
-                  <div class="row row-cols-1 g-3">
-                    {{ range (index $data.organization $lang).contacts.email }}
+                    <div class="col">{{ i18n "requisites.organization.name_full" }}</div>
                     <div class="col">
                       <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
-                        <input class="form-control" type="text" value="{{ . }}" readonly/>
+                        <span class="input-group-text"><i class="fas fa-building fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).name.full }}" readonly/>
                       </div>
                     </div>
-                    {{ end }}
-                  </div>
-                </div>
 
-                <div class="col">{{ i18n "requisites.organization.phone" }}</div>
-                <div class="col">
-                  <div class="row row-cols-1 g-3">
-                    {{ range (index $data.organization $lang).contacts.phone }}
+                    <div class="col">{{ i18n "requisites.organization.name_short" }}</div>
                     <div class="col">
                       <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
-                        <input class="form-control" type="text" value="{{ . }}" readonly/>
+                        <span class="input-group-text"><i class="fas fa-building fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).name.short }}" readonly/>
                       </div>
                     </div>
-                    {{ end }}
-                  </div>
-                </div>
 
-                <div class="col">{{ i18n "requisites.organization.site" }}</div>
-                <div class="col">
-                  <div class="row row-cols-1 g-3">
-                    {{ range (index $data.organization $lang).contacts.site }}
+                    <div class="col">{{ i18n "requisites.organization.address_legal" }}</div>
                     <div class="col">
                       <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-globe fa-fw"></i></span>
-                        <input class="form-control" type="text" value="{{ . }}" readonly/>
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.legal }}" readonly/>
                       </div>
                     </div>
-                    {{ end }}
+
+                    <div class="col">{{ i18n "requisites.organization.address_location" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.location }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.address_mailing" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).address.mailing }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.ogrn" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).ogrn }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.inn" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).inn }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.kpp" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).kpp }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.email" }}</div>
+                    <div class="col">
+                      <div class="row row-cols-1 g-3">
+                          {{ range (index $data.organization $lang).contacts.email }}
+                            <div class="col">
+                              <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
+                                <input class="form-control" type="text" value="{{ . }}" readonly/>
+                              </div>
+                            </div>
+                          {{ end }}
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.phone" }}</div>
+                    <div class="col">
+                      <div class="row row-cols-1 g-3">
+                          {{ range (index $data.organization $lang).contacts.phone }}
+                            <div class="col">
+                              <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
+                                <input class="form-control" type="text" value="{{ . }}" readonly/>
+                              </div>
+                            </div>
+                          {{ end }}
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.site" }}</div>
+                    <div class="col">
+                      <div class="row row-cols-1 g-3">
+                          {{ range (index $data.organization $lang).contacts.site }}
+                            <div class="col">
+                              <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-globe fa-fw"></i></span>
+                                <input class="form-control" type="text" value="{{ . }}" readonly/>
+                              </div>
+                            </div>
+                          {{ end }}
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.director" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user-tie fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.director }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.accountant" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user-cog fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.accountant }}" readonly/>
+                      </div>
+                    </div>
+
+                    <div class="col">{{ i18n "requisites.organization.accountant_deputy" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user-cog fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.accountant_deputy }}" readonly/>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <h5 class="card-header">{{ i18n "requisites.organization.title_codes" }}</h5>
+                <div class="card-body">
+                  <div class="row row-cols-1 row-cols-lg-2 g-3">
 
-                <div class="col">{{ i18n "requisites.organization.director" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user-tie fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.director }}" readonly/>
+                    <!--[ code-okpo ]-->
+                    <div class="col">{{ i18n "requisites.organization.okpo" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okpo }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okpo ]-->
+
+                    <!--[ code-oktmo ]-->
+                    <div class="col">{{ i18n "requisites.organization.oktmo" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.oktmo }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-oktmo ]-->
+
+                    <!--[ code-okved ]-->
+                    <div class="col">{{ i18n "requisites.organization.okved" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okved }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okved ]-->
+
+                    <!--[ code-okogu ]-->
+                    <div class="col">{{ i18n "requisites.organization.okogu" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okogu }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okogu ]-->
+
+                    <!--[ code-okfs ]-->
+                    <div class="col">{{ i18n "requisites.organization.okfs" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okfs }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okfs ]-->
+
+                    <!--[ code-okopf ]-->
+                    <div class="col">{{ i18n "requisites.organization.okopf" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okopf }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okopf ]-->
+
+                    <!--[ code-okato ]-->
+                    <div class="col">{{ i18n "requisites.organization.okato" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okato }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / code-okato ]-->
+
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <h5 class="card-header">{{ i18n "requisites.organization.title_bank" }}</h5>
+                <div class="card-body">
+                  <div class="row row-cols-1 row-cols-lg-2 g-3">
 
-                <div class="col">{{ i18n "requisites.organization.accountant" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user-cog fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.accountant }}" readonly/>
+                    <!--[ bank-name ]-->
+                    <div class="col">{{ i18n "requisites.organization.bank" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.name }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / bank-name ]-->
+
+                    <!--[ bank-bic ]-->
+                    <div class="col">{{ i18n "requisites.organization.bic" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.bic }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / bank-bic ]-->
+
+                    <!--[ bank-account-current ]-->
+                    <div class="col">{{ i18n "requisites.organization.account_current" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-credit-card fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.current }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / bank-account-current ]-->
+
+                    <!--[ bank-account-correspondent ]-->
+                    <div class="col">{{ i18n "requisites.organization.account_correspondent" }}</div>
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-credit-card fa-fw"></i></span>
+                        <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.correspondent }}" readonly/>
+                      </div>
+                    </div>
+                    <!--[ / bank-account-correspondent ]-->
+
                   </div>
                 </div>
-
-                <div class="col">{{ i18n "requisites.organization.accountant_deputy" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user-cog fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).staff.accountant_deputy }}" readonly/>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.organization.title_codes" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-                <!--[ code-okpo ]-->
-                <div class="col">{{ i18n "requisites.organization.okpo" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okpo }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okpo ]-->
-
-                <!--[ code-oktmo ]-->
-                <div class="col">{{ i18n "requisites.organization.oktmo" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.oktmo }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-oktmo ]-->
-
-                <!--[ code-okved ]-->
-                <div class="col">{{ i18n "requisites.organization.okved" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okved }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okved ]-->
-
-                <!--[ code-okogu ]-->
-                <div class="col">{{ i18n "requisites.organization.okogu" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okogu }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okogu ]-->
-
-                <!--[ code-okfs ]-->
-                <div class="col">{{ i18n "requisites.organization.okfs" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okfs }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okfs ]-->
-
-                <!--[ code-okopf ]-->
-                <div class="col">{{ i18n "requisites.organization.okopf" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okopf }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okopf ]-->
-
-                <!--[ code-okato ]-->
-                <div class="col">{{ i18n "requisites.organization.okato" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).codes.okato }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / code-okato ]-->
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.organization.title_bank" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-                <!--[ bank-name ]-->
-                <div class="col">{{ i18n "requisites.organization.bank" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.name }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / bank-name ]-->
-
-                <!--[ bank-bic ]-->
-                <div class="col">{{ i18n "requisites.organization.bic" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.bic }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / bank-bic ]-->
-
-                <!--[ bank-account-current ]-->
-                <div class="col">{{ i18n "requisites.organization.account_current" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.current }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / bank-account-current ]-->
-
-                <!--[ bank-account-correspondent ]-->
-                <div class="col">{{ i18n "requisites.organization.account_correspondent" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.organization $lang).bank.account.correspondent }}" readonly/>
-                  </div>
-                </div>
-                <!--[ / bank-account-correspondent ]-->
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{ end }}
+      {{ end }}
     <!--[ / organization ]-->
 
     <!--[ bank-account ]-->
-    {{ if (eq $type "bank-account") }}
-    <div class="col">
-      <div class="row row-cols-1 g-3">
-
-        <!--[ usd ]-->
-        {{ if ((index $data.bank $lang).account.usd.beneficiary.name) }}
+      {{ if (eq $type "bank-account") }}
         <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.bank.account.usd.currency" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
+          <div class="row row-cols-1 g-3">
 
-                <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_name" }}</div>
+            <!--[ usd ]-->
+              {{ if ((index $data.bank $lang).account.usd.beneficiary.name) }}
                 <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.name }}" readonly/>
+                  <div class="card">
+                    <h5 class="card-header">{{ i18n "requisites.bank.account.usd.currency" }}</h5>
+                    <div class="card-body">
+                      <div class="row row-cols-1 row-cols-lg-2 g-3">
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_name" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.name }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_account" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.account }}" readonly/>
+                            <span class="input-group-text"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_bank" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.bank }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.swift" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.swift }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.correspondent_bank" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.correspondent.bank }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.correspondent_swift" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.correspondent.swift }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.usd.target" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.target }}" readonly/>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
                 </div>
+              {{ end }}
+            <!--[ / usd ]-->
 
-                <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_account" }}</div>
+            <!--[ eur ]-->
+              {{ if ((index $data.bank $lang).account.eur.beneficiary.name) }}
                 <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.account }}" readonly/>
-                    <span class="input-group-text"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                  <div class="card">
+                    <h5 class="card-header">{{ i18n "requisites.bank.account.eur.currency" }}</h5>
+                    <div class="card-body">
+                      <div class="row row-cols-1 row-cols-lg-2 g-3">
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_name" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.name }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_account" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.account }}" readonly/>
+                            <span class="input-group-text"><i class="fas fa-euro-sign fa-fw"></i></span>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_bank" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.bank }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.swift" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.swift }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.correspondent_bank" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.correspondent.bank }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.correspondent_swift" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.correspondent.swift }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.eur.target" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.target }}" readonly/>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
                 </div>
+              {{ end }}
+            <!--[ / eur ]-->
 
-                <div class="col">{{ i18n "requisites.bank.account.usd.beneficiary_bank" }}</div>
+            <!--[ rub ]-->
+              {{ if ((index $data.bank $lang).account.rub.beneficiary.name) }}
                 <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.beneficiary.bank }}" readonly/>
+                  <div class="card">
+                    <h5 class="card-header">{{ i18n "requisites.bank.account.rub.currency" }}</h5>
+                    <div class="card-body">
+                      <div class="row row-cols-1 row-cols-lg-2 g-3">
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_name" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.name }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_account" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.account }}" readonly/>
+                            <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_bank" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.bank }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.bic" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.bic }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.inn" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.inn }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.kpp" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.kpp }}" readonly/>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.correspondent_account" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.correspondent.account }}" readonly/>
+                            <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+                          </div>
+                        </div>
+
+                        <div class="col">{{ i18n "requisites.bank.account.rub.target" }}</div>
+                        <div class="col">
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
+                            <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.target }}" readonly/>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
                 </div>
+              {{ end }}
+            <!--[ / rub ]-->
 
-                <div class="col">{{ i18n "requisites.bank.account.usd.swift" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.swift }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.usd.correspondent_bank" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.correspondent.bank }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.usd.correspondent_swift" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.correspondent.swift }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.usd.target" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.usd.target }}" readonly/>
-                  </div>
-                </div>
-
-              </div>
-            </div>
           </div>
         </div>
-        {{ end }}
-        <!--[ / usd ]-->
-
-        <!--[ eur ]-->
-        {{ if ((index $data.bank $lang).account.eur.beneficiary.name) }}
-        <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.bank.account.eur.currency" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_name" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.name }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_account" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.account }}" readonly/>
-                    <span class="input-group-text"><i class="fas fa-euro-sign fa-fw"></i></span>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.beneficiary_bank" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.beneficiary.bank }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.swift" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.swift }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.correspondent_bank" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.correspondent.bank }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.correspondent_swift" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.correspondent.swift }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.eur.target" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.eur.target }}" readonly/>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        {{ end }}
-        <!--[ / eur ]-->
-
-        <!--[ rub ]-->
-        {{ if ((index $data.bank $lang).account.rub.beneficiary.name) }}
-        <div class="col">
-          <div class="card">
-            <h5 class="card-header">{{ i18n "requisites.bank.account.rub.currency" }}</h5>
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_name" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.name }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_account" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.account }}" readonly/>
-                    <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.beneficiary_bank" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-university fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.beneficiary.bank }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.bic" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.bic }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.inn" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.inn }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.kpp" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-hashtag fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.kpp }}" readonly/>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.correspondent_account" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.correspondent.account }}" readonly/>
-                    <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
-                  </div>
-                </div>
-
-                <div class="col">{{ i18n "requisites.bank.account.rub.target" }}</div>
-                <div class="col">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-paper-plane fa-fw"></i></span>
-                    <input class="form-control" type="text" value="{{ (index $data.bank $lang).account.rub.target }}" readonly/>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        {{ end }}
-        <!--[ / rub ]-->
-
-      </div>
-    </div>
-    {{ end }}
+      {{ end }}
     <!--[ / bank-account ]-->
 
   </div>

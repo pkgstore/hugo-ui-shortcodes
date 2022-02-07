@@ -1,26 +1,26 @@
-{{ if .IsNamedParams }}
+{{ if (.IsNamedParams) }}
 
     {{ $file := ((.Get "id") | default "") }}
     {{ $size := ((.Get "size") | default "m") }}
     {{ $caption := ((.Get "caption") | default "") }}
-    {{ $align := (printf "float-%s" (.Get "align") | default "none") }}
+    {{ $align := ((printf "float-%s" (.Get "align")) | default "none") }}
 
-    {{ $ext := (path.Ext $file) }}
-    {{ $extSize := (print $size (path.Ext $file)) }}
-    {{ $img := (replace $file $ext $extSize) }}
+    {{ $ext := (path.Ext ($file)) }}
+    {{ $extSize := (print ($size) (path.Ext ($file))) }}
+    {{ $img := (replace ($file) ($ext) ($extSize)) }}
 
     {{ $space := "me-3" }}
-    {{ if (eq $align "float-end") }}{{ $space = "ms-3" }}{{ end }}
-    {{ if (eq $align "float-center") }}{{ $align = "text-center" }}{{ end }}
+    {{ if (eq ($align) ("float-end")) }}{{ $space = "ms-3" }}{{ end }}
+    {{ if (eq ($align) ("float-center")) }}{{ $align = "text-center" }}{{ end }}
 
-    <div class="shortcode shortcode-{{ .Name }} {{ $align }} {{ $space }}">
+    <div class="shortcode shortcode-{{ (.Name) }} {{ ($align) }} {{ ($space) }}">
       <figure class="figure">
-        <a class="d-inline-block" href="https://i.imgur.com/{{ $file }}" rel="noopener nofollow" data-caption="{{ $caption }}" data-fancybox>
+        <a class="d-inline-block" href="https://i.imgur.com/{{ ($file) }}" rel="noopener nofollow" data-caption="{{ ($caption) }}" data-fancybox>
           <picture>
-            <img class="figure-img img-thumbnail" src="https://i.imgur.com/{{ $img }}" alt="{{ $img }}" loading="lazy"/>
+            <img class="figure-img img-thumbnail" src="https://i.imgur.com/{{ ($img) }}" alt="{{ ($img) }}" loading="lazy"/>
           </picture>
         </a>
-          {{ with $caption }}
+          {{ with ($caption) }}
             <figcaption class="figure-caption">{{ . }}</figcaption>
           {{ end }}
       </figure>
@@ -29,7 +29,7 @@
 {{ else }}
 
   <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">[ERROR] {{ .Name | humanize }}</h4>
+    <h4 class="alert-heading">[ERROR] {{ ((.Name) | humanize) }}</h4>
     <p>Please provide named Parameters.</p>
   </div>
 

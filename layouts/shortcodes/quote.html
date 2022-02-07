@@ -1,21 +1,21 @@
 {{ $author := ((.Get "author") | default "") }}
 {{ $url := ((.Get "url") | default "") }}
 
-<div class="shortcode shortcode-{{ .Name }}">
+<div class="shortcode shortcode-{{ (.Name) }}">
   <figure>
     <blockquote class="blockquote">
-      {{ with .Inner }}{{ . | $.Page.RenderString (dict "display" "block") }}{{ end }}
+        {{ with (.Inner) }}{{ (. | ($.Page.RenderString (dict "display" "block"))) }}{{ end }}
     </blockquote>
-    {{ with $author }}
-    <figcaption class="blockquote-footer">
-      <cite>
-        {{ with $url }}
-        <a href="{{ $url }}" target="_blank" rel="noopener nofollow">{{ $author | $.Page.RenderString }}</a>
-        {{ else }}
-        {{ $author | $.Page.RenderString }}
-        {{ end }}
-      </cite>
-    </figcaption>
-    {{ end }}
+      {{ with ($author) }}
+        <figcaption class="blockquote-footer">
+          <cite>
+              {{ with ($url) }}
+                <a href="{{ ($url) }}" target="_blank" rel="noopener nofollow">{{ (($author) | ($.Page.RenderString)) }}</a>
+              {{ else }}
+                  {{ (($author) | ($.Page.RenderString)) }}
+              {{ end }}
+          </cite>
+        </figcaption>
+      {{ end }}
   </figure>
 </div>

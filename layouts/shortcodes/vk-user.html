@@ -6,141 +6,141 @@
 
 <div class="shortcode shortcode-{{ .Name }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {{ range $users }}
-    {{ $user := (getJSON $url "/method/users.get?user_ids=" . "&v=" $ver "&access_token=" $token "&fields=" $fields) }}
+      {{ range $users }}
+          {{ $user := (getJSON $url "/method/users.get?user_ids=" . "&v=" $ver "&access_token=" $token "&fields=" $fields) }}
 
-    {{ range $user.response }}
-    {{ $profile := (printf "https://vk.com/id%d" (.id | int)) }}
-    {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
-    <div class="col">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-4 p-1">
-            <a class="d-inline-block" href="{{ $profile }}" target="_blank" rel="noopener nofollow">
-              <img src="{{ .photo_400 }}" class="card-img" alt="{{ $profile }}"/>
-            </a>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body h-100">
-              <div class="d-flex flex-column h-100">
-                <div class="flex-shrink-0">
-                  <h5 class="card-title">
-                    <a href="{{ $profile }}" target="_blank" rel="noopener nofollow">{{ .first_name }} {{ .last_name }}</a>
-                  </h5>
-                  <p class="card-text">{{ .about }}</p>
-                </div>
-                <div class="mt-auto">
-                  <ul class="list-inline m-0 mt-3">
-                    {{ if (.followers_count) }}
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="{{ $profile }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-user-friends fa-fw me-1"></i>
-                        {{ .followers_count }}
+          {{ range $user.response }}
+              {{ $profile := (printf "https://vk.com/id%d" (.id | int)) }}
+              {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
+              <div class="col">
+                <div class="card">
+                  <div class="row g-0">
+                    <div class="col-md-4 p-1">
+                      <a class="d-inline-block" href="{{ $profile }}" target="_blank" rel="noopener nofollow">
+                        <img src="{{ .photo_400 }}" class="card-img" alt="{{ $profile }}"/>
                       </a>
-                    </li>
-                    {{ end }}
-                    {{ if (.sex) }}
-                    <li class="list-inline-item">
-                      {{ $gender := "" }}
-                      {{ if (eq (.sex | int) 1) }}{{ $gender = "venus" }}{{ end }}
-                      {{ if (eq (.sex | int) 2) }}{{ $gender = "mars" }}{{ end }}
-                      <a class="btn btn-light btn-sm text-muted" href="{{ $profile }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-{{ $gender }} fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if (.skype) }}
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="skype:{{ .skype }}?chat" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fab fa-skype fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if (.site) }}
-                    <li class="list-inline-item">
-                      {{ $url := urls.Parse .site }}
-                      {{ $scheme := "http://" }}
-                      {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
-                      <a class="btn btn-light btn-sm text-muted" href="{{ $scheme }}{{ .site }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-globe fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if (.country.title) }}
-                    {{ $location := (printf "%s %s" (.city.title) (.country.title)) }}
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="https://google.com/maps/search/?api=1&amp;query={{ $location }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-map-marker-alt fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if (or (.activities) (.interests) (.music) (.movies) (.tv) (.books) (.games) (.quotes)) }}
-                    <li class="list-inline-item float-end">
-                      <button class="btn btn-light btn-sm text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#vk-{{ (.id | int) }}-{{ $id }}" aria-expanded="false" aria-controls="vk-{{ (.id | int) }}-{{ $id }}">
-                        <i class="fas fa-expand fa-fw"></i>
-                      </button>
-                    </li>
-                    {{ end }}
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body h-100">
+                        <div class="d-flex flex-column h-100">
+                          <div class="flex-shrink-0">
+                            <h5 class="card-title">
+                              <a href="{{ $profile }}" target="_blank" rel="noopener nofollow">{{ .first_name }} {{ .last_name }}</a>
+                            </h5>
+                            <p class="card-text">{{ .about }}</p>
+                          </div>
+                          <div class="mt-auto">
+                            <ul class="list-inline m-0 mt-3">
+                                {{ if (.followers_count) }}
+                                  <li class="list-inline-item">
+                                    <a class="btn btn-light btn-sm text-muted" href="{{ $profile }}" target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fas fa-user-friends fa-fw me-1"></i>
+                                        {{ .followers_count }}
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if (.sex) }}
+                                  <li class="list-inline-item">
+                                      {{ $gender := "" }}
+                                      {{ if (eq (.sex | int) 1) }}{{ $gender = "venus" }}{{ end }}
+                                      {{ if (eq (.sex | int) 2) }}{{ $gender = "mars" }}{{ end }}
+                                    <a class="btn btn-light btn-sm text-muted" href="{{ $profile }}" target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fas fa-{{ $gender }} fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if (.skype) }}
+                                  <li class="list-inline-item">
+                                    <a class="btn btn-light btn-sm text-muted" href="skype:{{ .skype }}?chat" target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fab fa-skype fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if (.site) }}
+                                  <li class="list-inline-item">
+                                      {{ $url := urls.Parse .site }}
+                                      {{ $scheme := "http://" }}
+                                      {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
+                                    <a class="btn btn-light btn-sm text-muted" href="{{ $scheme }}{{ .site }}" target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fas fa-globe fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if (.country.title) }}
+                                    {{ $location := (printf "%s %s" (.city.title) (.country.title)) }}
+                                    <li class="list-inline-item">
+                                      <a class="btn btn-light btn-sm text-muted" href="https://google.com/maps/search/?api=1&amp;query={{ $location }}" target="_blank" rel="noopener nofollow" role="button">
+                                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                                      </a>
+                                    </li>
+                                {{ end }}
+                                {{ if (or (.activities) (.interests) (.music) (.movies) (.tv) (.books) (.games) (.quotes)) }}
+                                  <li class="list-inline-item float-end">
+                                    <button class="btn btn-light btn-sm text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#vk-{{ (.id | int) }}-{{ $id }}" aria-expanded="false" aria-controls="vk-{{ (.id | int) }}-{{ $id }}">
+                                      <i class="fas fa-expand fa-fw"></i>
+                                    </button>
+                                  </li>
+                                {{ end }}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-flush collapse" id="vk-{{ (.id | int) }}-{{ $id }}">
+                      {{ if (.activities) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-briefcase fa-fw"></i></span>
+                          <span>{{ .activities }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.interests) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-paper-plane fa-fw"></i></span>
+                          <span>{{ .interests }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.music) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-music fa-fw"></i></span>
+                          <span>{{ .music }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.movies) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-film fa-fw"></i></span>
+                          <span>{{ .movies }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.tv) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-video fa-fw"></i></span>
+                          <span>{{ .tv }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.books) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-book fa-fw"></i></span>
+                          <span>{{ .books }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.games) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-gamepad fa-fw"></i></span>
+                          <span>{{ .games }}</span>
+                        </li>
+                      {{ end }}
+                      {{ if (.quotes) }}
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="text-muted me-3"><i class="fas fa-quote-left fa-fw"></i></span>
+                          <span>{{ .quotes }}</span>
+                        </li>
+                      {{ end }}
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <ul class="list-group list-group-flush collapse" id="vk-{{ (.id | int) }}-{{ $id }}">
-          {{ if (.activities) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-briefcase fa-fw"></i></span>
-            <span>{{ .activities }}</span>
-          </li>
           {{ end }}
-          {{ if (.interests) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-paper-plane fa-fw"></i></span>
-            <span>{{ .interests }}</span>
-          </li>
-          {{ end }}
-          {{ if (.music) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-music fa-fw"></i></span>
-            <span>{{ .music }}</span>
-          </li>
-          {{ end }}
-          {{ if (.movies) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-film fa-fw"></i></span>
-            <span>{{ .movies }}</span>
-          </li>
-          {{ end }}
-          {{ if (.tv) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-video fa-fw"></i></span>
-            <span>{{ .tv }}</span>
-          </li>
-          {{ end }}
-          {{ if (.books) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-book fa-fw"></i></span>
-            <span>{{ .books }}</span>
-          </li>
-          {{ end }}
-          {{ if (.games) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-gamepad fa-fw"></i></span>
-            <span>{{ .games }}</span>
-          </li>
-          {{ end }}
-          {{ if (.quotes) }}
-          <li class="list-group-item d-flex align-items-center">
-            <span class="text-muted me-3"><i class="fas fa-quote-left fa-fw"></i></span>
-            <span>{{ .quotes }}</span>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-    </div>
-    {{ end }}
 
-    {{ end }}
+      {{ end }}
   </div>
 </div>

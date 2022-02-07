@@ -1,63 +1,63 @@
-{{ if .IsNamedParams }}
+{{ if (.IsNamedParams) }}
 
-{{ $subject := ((.Get "subject") | default .Page.Title) }}
-{{ $subject = (htmlEscape (printf "[%s] %s" $.Site.Title $subject)) }}
-{{ $token := ((.Get "token") | default "") }}
+    {{ $subject := ((.Get "subject") | default (.Page.Title)) }}
+    {{ $subject = (htmlEscape (printf "[%s] %s" ($.Site.Title) ($subject))) }}
+    {{ $token := ((.Get "token") | default "") }}
 
-<div class="shortcode shortcode-form shortcode-{{ .Name }} mb-3">
-  <form method="post" action="https://api.staticforms.xyz/submit">
-    <input type="hidden" name="accessKey" value="{{ $token }}"/>
-    <input type="hidden" name="redirectTo" value="{{ .Page.Permalink }}"/>
-    <input type="hidden" name="subject" value="{{ $subject }}"/>
-    <input type="text" name="honeypot" style="display: none;"/>
-    <div class="row row-cols-1 g-3">
-      <div class="col">
-        <div class="row row-cols-1 row-cols-lg-3 g-3">
+    <div class="shortcode shortcode-form shortcode-{{ (.Name) }} mb-3">
+      <form method="post" action="https://api.staticforms.xyz/submit">
+        <input type="hidden" name="accessKey" value="{{ ($token) }}"/>
+        <input type="hidden" name="redirectTo" value="{{ (.Page.Permalink) }}"/>
+        <input type="hidden" name="subject" value="{{ ($subject) }}"/>
+        <input type="text" name="honeypot" style="display: none;"/>
+        <div class="row row-cols-1 g-3">
           <div class="col">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-              <input class="form-control" type="text" name="name" placeholder='{{ i18n "form.contact.name" }}' required/>
+            <div class="row row-cols-1 row-cols-lg-3 g-3">
+              <div class="col">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                  <input class="form-control" type="text" name="name" placeholder='{{ (i18n "form.contact.name") }}' required/>
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
+                  <input class="form-control" type="email" name="email" placeholder='{{ (i18n "form.contact.email") }}' required/>
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
+                  <input class="form-control" type="tel" name="phone" placeholder='{{ (i18n "form.contact.phone") }}'/>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
-              <input class="form-control" type="email" name="email" placeholder='{{ i18n "form.contact.email" }}' required/>
+            <div class="row g-3">
+              <div class="col">
+                <textarea class="form-control" rows="5" name="message" placeholder='{{ (i18n "form.contact.message_placeholder") }}' required></textarea>
+              </div>
             </div>
           </div>
           <div class="col">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
-              <input class="form-control" type="tel" name="phone" placeholder='{{ i18n "form.contact.phone" }}'/>
+            <div class="row g-3">
+              <div class="col text-end">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-upload fa-fw me-2"></i>{{ (i18n "form.contact.submit") }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="row g-3">
-          <div class="col">
-            <textarea class="form-control" rows="5" name="message" placeholder='{{ i18n "form.contact.message_placeholder" }}' required></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="row g-3">
-          <div class="col text-end">
-            <button class="btn btn-primary" type="submit">
-              <i class="fas fa-upload fa-fw me-2"></i>{{ i18n "form.contact.submit" }}
-            </button>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
-  </form>
-</div>
 
 {{ else }}
 
-<div class="alert alert-danger" role="alert">
-  <h4 class="alert-heading">[ERROR] {{ .Name | humanize }}</h4>
-  <p>Please provide named Parameters.</p>
-</div>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">[ERROR] {{ ((.Name) | humanize) }}</h4>
+    <p>Please provide named Parameters.</p>
+  </div>
 
 {{ end }}
