@@ -10,9 +10,9 @@
         <figcaption class="blockquote-footer">
           <cite>
               {{ with ($url) }}
-                <a href="{{ ($url) }}" target="_blank" rel="noopener nofollow">{{ (($author) | ($.Page.RenderString)) }}</a>
+                <a href="{{ ($url) }}" target="_blank" rel="noopener nofollow">{{ (($author) | $.Page.RenderString) }}</a>
               {{ else }}
-                  {{ (($author) | ($.Page.RenderString)) }}
+                  {{ (($author) | $.Page.RenderString) }}
               {{ end }}
           </cite>
         </figcaption>

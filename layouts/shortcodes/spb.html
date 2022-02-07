@@ -10,7 +10,7 @@
   </p>
   <div class="collapse" id="sc-spb-{{ ($id) }}">
     <div class="card card-body mb-3">
-        {{ with (.Inner) }}{{ (. | ($.Page.RenderString (dict "display" "block"))) }}{{ end }}
+        {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>
   </div>
 </div>
