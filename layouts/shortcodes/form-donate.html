@@ -29,77 +29,84 @@
                     <input type="hidden" name="short-dest" value="Donation Form"/>
                     <input type="hidden" name="quickpay-form" value="donate"/>
                     <input type="hidden" name="successURL" value="{{ ($.Site.BaseURL) }}"/>
-                    <div class="row row-cols-1 row-cols-lg-2 g-3">
+                    <div class="row row-cols-1 g-3">
                       <div class="col">
-                        <div class="row row-cols-1 g-3">
+                        <div class="row row-cols-1 row-cols-lg-2 g-3">
                           <div class="col">
-                            <div class="input-group">
-                              <span class="input-group-text"><i class="fas fa-coffee fa-fw"></i></span>
-                              <input class="form-control" type="text" name="targets" value="{{ (i18n "form.donate.targets_value") }}" placeholder='{{ (i18n "form.donate.targets") }}' required/>
+                            <div class="row row-cols-1 g-3">
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-text"><i class="fas fa-coffee fa-fw"></i></span>
+                                  <input class="form-control" type="text" name="targets" value="{{ (i18n "form.donate.targets_value") }}" placeholder='{{ (i18n "form.donate.targets") }}' required/>
+                                </div>
+                                <small class="form-text text-muted">{{ (i18n "form.donate.targets_help") }}</small>
+                              </div>
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+                                  <input class="form-control" type="number" name="sum" value="100" min="1"/>
+                                </div>
+                                <small class="form-text text-muted">{{ (i18n "form.donate.sum_help") }}</small>
+                              </div>
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                                  <select class="form-select" name="paymentType">
+                                    <option value="AC">{{ (i18n "form.donate.card") }}</option>
+                                    <option value="PC">{{ (i18n "form.donate.yooMoney") }}</option>
+                                    <option value="MC">{{ (i18n "form.donate.mobile_phone") }}</option>
+                                  </select>
+                                </div>
+                                <small class="form-text">{{ (i18n "form.donate.payment_type_help") }}</small>
+                              </div>
+                              <div class="col">
+                                <textarea class="form-control" name="comment" rows="2" maxlength="200" placeholder='{{ (i18n "form.donate.comment_placeholder") }}'>{{ ($.Site.BaseURL) }}</textarea>
+                                <small class="form-text">{{ (i18n "form.donate.comment_help") }}</small>
+                              </div>
                             </div>
-                            <small class="form-text text-muted">{{ (i18n "form.donate.targets_help") }}</small>
                           </div>
                           <div class="col">
-                            <div class="input-group">
-                              <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
-                              <input class="form-control" type="number" name="sum" value="100" min="1"/>
+                            <div class="row row-cols-1 g-3">
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="need-fio" id="ya-need-fio"/>
+                                  <label class="form-check-label" for="ya-need-fio">{{ (i18n "form.donate.name") }}</label>
+                                  <div class="form-text">{{ (i18n "form.donate.name_help") }}</div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="need-email" id="ya-need-email"/>
+                                  <label class="form-check-label" for="ya-need-email">{{ (i18n "form.donate.email") }}</label>
+                                  <div class="form-text">{{ (i18n "form.donate.email_help") }}</div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="need-phone" id="ya-need-phone"/>
+                                  <label class="form-check-label" for="ya-need-phone">{{ (i18n "form.donate.phone") }}</label>
+                                  <div class="form-text">{{ (i18n "form.donate.phone_help") }}</div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="need-address" id="ya-need-address"/>
+                                  <label class="form-check-label" for="ya-need-address">{{ (i18n "form.donate.address") }}</label>
+                                  <div class="form-text">{{ (i18n "form.donate.address_help") }}</div>
+                                </div>
+                              </div>
                             </div>
-                            <small class="form-text text-muted">{{ (i18n "form.donate.sum_help") }}</small>
-                          </div>
-                          <div class="col">
-                            <div class="input-group">
-                              <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
-                              <select class="form-select" name="paymentType">
-                                <option value="AC">{{ (i18n "form.donate.card") }}</option>
-                                <option value="PC">{{ (i18n "form.donate.yooMoney") }}</option>
-                                <option value="MC">{{ (i18n "form.donate.mobile_phone") }}</option>
-                              </select>
-                            </div>
-                            <small class="form-text">{{ (i18n "form.donate.payment_type_help") }}</small>
-                          </div>
-                          <div class="col">
-                            <textarea class="form-control" name="comment" rows="2" maxlength="200" placeholder='{{ (i18n "form.donate.comment_placeholder") }}'>{{ ($.Site.BaseURL) }}</textarea>
-                            <small class="form-text">{{ (i18n "form.donate.comment_help") }}</small>
                           </div>
                         </div>
                       </div>
                       <div class="col">
-                        <div class="row row-cols-1 g-3">
-                          <div class="col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="need-fio" id="ya-need-fio"/>
-                              <label class="form-check-label" for="ya-need-fio">{{ (i18n "form.donate.name") }}</label>
-                              <div class="form-text">{{ (i18n "form.donate.name_help") }}</div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="need-email" id="ya-need-email"/>
-                              <label class="form-check-label" for="ya-need-email">{{ (i18n "form.donate.email") }}</label>
-                              <div class="form-text">{{ (i18n "form.donate.email_help") }}</div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="need-phone" id="ya-need-phone"/>
-                              <label class="form-check-label" for="ya-need-phone">{{ (i18n "form.donate.phone") }}</label>
-                              <div class="form-text">{{ (i18n "form.donate.phone_help") }}</div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="need-address" id="ya-need-address"/>
-                              <label class="form-check-label" for="ya-need-address">{{ (i18n "form.donate.address") }}</label>
-                              <div class="form-text">{{ (i18n "form.donate.address_help") }}</div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="d-grid">
-                              <button class="btn btn-primary is-label" type="submit">
-                                <i class="fas fa-donate fa-fw me-2"></i>{{ (i18n "form.donate.submit") }}
-                              </button>
-                            </div>
-                          </div>
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                          <button title="{{ (i18n "form.donate.submit") }}" class="btn btn-success btn-lg" type="submit">
+                            <i class="fas fa-donate fa-fw"></i>
+                          </button>
+                          <button title="{{ (i18n "form.donate.reset") }}" class="btn btn-danger btn-lg" type="reset">
+                            <i class="fa-solid fa-rotate-left fa-fw"></i>
+                          </button>
                         </div>
                       </div>
                     </div>

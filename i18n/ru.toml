@@ -76,7 +76,10 @@ other = "Адрес"
 other = "Отметьте, если хотите указать адрес отправителя."
 
 [form.donate.submit]
-other = "Перевести"
+other = "Отправить"
+
+[form.donate.reset]
+other = "Сбросить"
 
 [form.donate.btc]
 other = "BTC"
