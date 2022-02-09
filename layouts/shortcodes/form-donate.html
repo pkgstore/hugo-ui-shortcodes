@@ -23,7 +23,7 @@
               <div class="card">
                 <h5 class="card-header">{{ (i18n "form.donate.yooMoney") }}</h5>
                 <div class="card-body">
-                  <form method="post" action="https://yoomoney.ru/quickpay/confirm.xml">
+                  <form method="post" action="https://yoomoney.ru/quickpay/confirm.xml" target="_blank">
                     <input type="hidden" name="receiver" value="{{ ($wallet) }}"/>
                     <input type="hidden" name="formcomment" value="Donation Form"/>
                     <input type="hidden" name="short-dest" value="Donation Form"/>
