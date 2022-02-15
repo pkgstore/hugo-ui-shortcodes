@@ -1,5 +1,5 @@
-{{ $ver := ($.Site.Params.api.vk.ver) }}
-{{ $token := ($.Site.Params.api.vk.token | base64Decode) }}
+{{ $ver := ($.Site.Data.api.vk.version) }}
+{{ $token := ($.Site.Data.api.vk.token | base64Decode) }}
 {{ $fields := ("sex,bdate,city,country,photo_400,contacts,site,followers_count,connections,activities,interests,music,movies,tv,books,games,about,quotes") }}
 {{ $url := ("https://api.vk.com") }}
 {{ $users := (split (.Get 0) "|") }}

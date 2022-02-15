@@ -1,5 +1,5 @@
 {{ $repo := ((.Get 0) | default "") }}
-{{ $token := $.Site.Params.api.gitlab.token }}
+{{ $token := $.Site.Data.api.gitlab.token }}
 {{ $url := "https://gitlab.com/api/v4" }}
 {{ $data := getJSON $url "/projects/" $repo "?access_token=" $token }}
 

@@ -3,7 +3,7 @@
 {{ $taxonomy := ("authors") }}
 
 {{ $page := ($.Site.GetPage (printf "/%s/%s" ($taxonomy) ($url))) }}
-{{ $name := ($page.Title | default ($user | markdownify)) }}
+{{ $name := (($page.Title) | default (($user) | markdownify)) }}
 
 {{ with ($page) }}
   <span class="shortcode shortcode-user"><a href="{{ ($page.RelPermalink) }}">{{ ($name) }}</a></span>

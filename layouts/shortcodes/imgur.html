@@ -9,9 +9,9 @@
     {{ $extSize := (print ($size) (path.Ext ($file))) }}
     {{ $img := (replace ($file) ($ext) ($extSize)) }}
 
-    {{ $space := "me-3" }}
-    {{ if (eq ($align) ("float-end")) }}{{ $space = "ms-3" }}{{ end }}
-    {{ if (eq ($align) ("float-center")) }}{{ $align = "text-center" }}{{ end }}
+    {{ $space := ("me-3") }}
+    {{ if (eq ($align) ("float-end")) }}{{ $space = ("ms-3") }}{{ end }}
+    {{ if (eq ($align) ("float-center")) }}{{ $align = ("text-center") }}{{ end }}
 
     <div class="shortcode shortcode-{{ (.Name) }} {{ ($align) }} {{ ($space) }}">
       <figure class="figure">
@@ -30,7 +30,7 @@
 
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">[ERROR] {{ ((.Name) | humanize) }}</h4>
-    <p>Please provide named Parameters.</p>
+    <p>{{ (i18n "alert.no_named_params") }}</p>
   </div>
 
 {{ end }}

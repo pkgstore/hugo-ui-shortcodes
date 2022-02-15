@@ -1,11 +1,11 @@
 {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
-{{ $fn := ((printf "sc_diagram_%s" $id) | safeJS) }}
+{{ $fn := ((printf "sc_diagram_%s" ($id)) | safeJS) }}
 
-<div class="shortcode shortcode-{{ .Name }} mb-3">
-  <div id="sc-diagram-{{ $id }}" class="mermaid overflow-auto ext-diagram">{{- safeHTML .Inner -}}</div>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" onload="{{ $fn }}();" crossorigin="anonymous" async></script>
+<div class="shortcode shortcode-{{ (.Name) }} mb-3">
+  <div id="sc-diagram-{{ ($id) }}" class="mermaid overflow-auto ext-diagram">{{- (safeHTML .Inner) -}}</div>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" onload="{{ ($fn) }}();" crossorigin="anonymous" async></script>
   <script>
-    function {{ $fn }}() {
+    function {{ ($fn) }}() {
       const $font = 'inherit';
       const $config = {
         startOnLoad: true,

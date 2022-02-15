@@ -1,73 +1,79 @@
-{{ $token := (dict "Authorization" (printf "token %s" ($.Site.Params.api.github.token | base64Decode))) }}
-{{ $url := "https://api.github.com" }}
+{{ $url := ("https://api.github.com") }}
+{{ $ts := (now.Unix) }}
+{{ $headers := (dict
+"User-Agent" (($.Site.Data.api.user_agent) | default "")
+"Authorization" (printf "token %s" (($.Site.Data.api.github.token) | base64Decode))
+) }}
 {{ $users_orgs := (split (.Get 0) "|") }}
 
-<div class="shortcode shortcode-{{ .Name }} mb-3">
+<div class="shortcode shortcode-{{ (.Name) }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {{ range $users_orgs }}
-    {{ $orgs := getJSON $url "/users/" . "/orgs" $token }}
-    {{ range $orgs }}
-    {{ $org := getJSON $url "/orgs/" .login $token }}
+      {{ range ($users_orgs) }}
+          {{ $orgs := (getJSON ($url) "/users/" . "/orgs?ts=" ($ts) ($headers)) }}
+          {{ range $orgs }}
+              {{ $org := (getJSON ($url) "/orgs/" .login "?ts=" ($ts) ($headers)) }}
 
-    <div class="col">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-4 p-1">
-            <a class="d-inline-block" href="{{ $org.html_url }}" target="_blank" rel="noopener nofollow">
-              <img src="{{ $org.avatar_url }}" class="card-img" alt="{{ $org.name | default $org.login }}"/>
-            </a>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body h-100">
-              <div class="d-flex flex-column h-100">
-                <div class="flex-shrink-0">
-                  <h5 class="card-title">
-                    <a href="{{ $org.html_url }}" target="_blank" rel="noopener nofollow">{{ $org.name | default $org.login }}</a>
-                  </h5>
-                  <p class="card-text">{{ $org.description | plainify }}</p>
-                </div>
-                <div class="mt-auto">
-                  <ul class="list-inline m-0 mt-3">
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="{{ $org.html_url }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-book fa-fw me-1"></i>
-                        {{ $org.public_repos }}
-                      </a>
-                    </li>
-                    {{ if ($org.blog) }}
-                    <li class="list-inline-item">
-                      {{ $url := urls.Parse $org.blog }}
-                      {{ $scheme := "http://" }}
-                      {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
-                      <a class="btn btn-light btn-sm text-muted" href="{{ $scheme }}{{ $org.blog }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-globe fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if ($org.twitter_username) }}
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="https://twitter.com/{{ $org.twitter_username }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fab fa-twitter fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ if ($org.email) }}
-                    <li class="list-inline-item">
-                      <a class="btn btn-light btn-sm text-muted" href="mailto:{{ $org.email }}" target="_blank" rel="noopener nofollow" role="button">
-                        <i class="fas fa-envelope-open-text fa-fw"></i>
-                      </a>
-                    </li>
-                    {{ end }}
-                  </ul>
+              <div class="col">
+                <div class="card">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <div class="node-cover text-center p-3">
+                        <a class="d-inline-block" href="{{ ($org.html_url) }}" target="_blank" rel="noopener noreferrer nofollow">
+                          <img src="{{ ($org.avatar_url) }}" class="card-img" alt="{{ (($org.name) | default ($org.login)) }}"/>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body h-100">
+                        <div class="d-flex flex-column h-100">
+                          <div class="flex-shrink-0">
+                            <h5 class="card-title">
+                              <a href="{{ ($org.html_url) }}" target="_blank" rel="noopener noreferrer nofollow">{{ (($org.name) | default ($org.login)) }}</a>
+                            </h5>
+                            <p class="card-text">{{ (($org.description) | plainify) }}</p>
+                          </div>
+                          <div class="mt-auto">
+                            <ul class="list-inline m-0 mt-3">
+                              <li class="list-inline-item">
+                                <a class="btn btn-light btn-sm text-muted" href="{{ ($org.html_url) }}" target="_blank" rel="noopener noreferrer nofollow" role="button">
+                                  <i class="fas fa-book fa-fw me-1"></i>
+                                    {{ ($org.public_repos) }}
+                                </a>
+                              </li>
+                                {{ if ($org.blog) }}
+                                  <li class="list-inline-item">
+                                      {{ $url := (urls.Parse ($org.blog)) }}
+                                      {{ $scheme := "http://" }}
+                                      {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
+                                    <a class="btn btn-light btn-sm text-muted" href="{{ ($scheme) }}{{ ($org.blog) }}" target="_blank" rel="noopener noreferrer nofollow" role="button">
+                                      <i class="fas fa-globe fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if ($org.twitter_username) }}
+                                  <li class="list-inline-item">
+                                    <a class="btn btn-light btn-sm text-muted" href="https://twitter.com/{{ ($org.twitter_username) }}" target="_blank" rel="noopener noreferrer nofollow" role="button">
+                                      <i class="fab fa-twitter fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                                {{ if ($org.email) }}
+                                  <li class="list-inline-item">
+                                    <a class="btn btn-light btn-sm text-muted" href="mailto:{{ ($org.email) }}" target="_blank" rel="noopener noreferrer nofollow" role="button">
+                                      <i class="fas fa-envelope-open-text fa-fw"></i>
+                                    </a>
+                                  </li>
+                                {{ end }}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    {{ end }}
-    {{ end }}
+          {{ end }}
+      {{ end }}
   </div>
 </div>

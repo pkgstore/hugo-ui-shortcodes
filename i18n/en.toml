@@ -1,4 +1,11 @@
 # ----------------------------------------------------------------------------------------------------------------------
+# Alerts.
+# ----------------------------------------------------------------------------------------------------------------------
+
+[alert.no_named_params]
+other = "Please provide named Parameters."
+
+# ----------------------------------------------------------------------------------------------------------------------
 # Contact Form.
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -103,28 +110,28 @@ other = "Services"
 # Requisites.
 # ----------------------------------------------------------------------------------------------------------------------
 
-[requisites.organization.title_general]
+[requisites.organization.header.general]
 other = "General Requisites"
 
-[requisites.organization.title_codes]
+[requisites.organization.header.codes]
 other = "Organization Codes"
 
-[requisites.organization.title_bank]
+[requisites.organization.header.bank]
 other = "Organization Bank"
 
-[requisites.organization.name_full]
+[requisites.organization.name.full]
 other = "Full Name"
 
-[requisites.organization.name_short]
+[requisites.organization.name.short]
 other = "Short Name"
 
-[requisites.organization.address_legal]
+[requisites.organization.address.legal]
 other = "Legal Address"
 
-[requisites.organization.address_location]
+[requisites.organization.address.location]
 other = "Location"
 
-[requisites.organization.address_mailing]
+[requisites.organization.address.mailing]
 other = "Mailing Address"
 
 [requisites.organization.ogrn]
@@ -181,70 +188,70 @@ other = "Bank"
 [requisites.organization.bic]
 other = "BIC"
 
-[requisites.organization.account_current]
+[requisites.organization.account.current]
 other = "Current Account"
 
-[requisites.organization.account_correspondent]
+[requisites.organization.account.correspondent]
 other = "Correspondent Account"
 
-[requisites.bank.account.usd.currency]
-other = "USD"
+[requisites.bank.account.header]
+other = "Bank account"
 
-[requisites.bank.account.usd.beneficiary_name]
-other = "Beneficiary Name"
+[requisites.bank.account.usd.beneficiary.name]
+other = "Beneficiary"
 
-[requisites.bank.account.usd.beneficiary_account]
-other = "Beneficiary Account"
+[requisites.bank.account.usd.beneficiary.account]
+other = "Beneficiary's Account"
 
-[requisites.bank.account.usd.beneficiary_bank]
+[requisites.bank.account.usd.beneficiary.bank]
 other = "Beneficiary Bank"
 
-[requisites.bank.account.usd.swift]
-other = "SWIFT"
+[requisites.bank.account.usd.beneficiary.swift]
+other = "Beneficiary's Bank SWIFT"
 
-[requisites.bank.account.usd.correspondent_bank]
-other = "Correspondent Bank"
+[requisites.bank.account.usd.intermediary.bank]
+other = "Intermediary"
 
-[requisites.bank.account.usd.correspondent_swift]
-other = "Correspondent SWIFT"
+[requisites.bank.account.usd.intermediary.account]
+other = "Intermediary's Bank Account"
+
+[requisites.bank.account.usd.intermediary.swift]
+other = "Intermediary's Bank SWIFT"
 
 [requisites.bank.account.usd.target]
-other = "Purpose of Payment"
+other = "Payment Details"
 
-[requisites.bank.account.eur.currency]
-other = "EUR"
+[requisites.bank.account.eur.beneficiary.name]
+other = "Beneficiary"
 
-[requisites.bank.account.eur.beneficiary_name]
-other = "Beneficiary Name"
+[requisites.bank.account.eur.beneficiary.account]
+other = "Beneficiary's Account"
 
-[requisites.bank.account.eur.beneficiary_account]
-other = "Beneficiary Account"
-
-[requisites.bank.account.eur.beneficiary_bank]
+[requisites.bank.account.eur.beneficiary.bank]
 other = "Beneficiary Bank"
 
-[requisites.bank.account.eur.swift]
-other = "SWIFT"
+[requisites.bank.account.eur.beneficiary.swift]
+other = "Beneficiary's Bank SWIFT"
 
-[requisites.bank.account.eur.correspondent_bank]
-other = "Correspondent Bank"
+[requisites.bank.account.eur.intermediary.bank]
+other = "Intermediary"
 
-[requisites.bank.account.eur.correspondent_swift]
-other = "Correspondent SWIFT"
+[requisites.bank.account.eur.intermediary.account]
+other = "Intermediary's Bank Account"
+
+[requisites.bank.account.eur.intermediary.swift]
+other = "Intermediary's Bank SWIFT"
 
 [requisites.bank.account.eur.target]
-other = "Purpose of Payment"
+other = "Payment Details"
 
-[requisites.bank.account.rub.currency]
-other = "RUB"
-
-[requisites.bank.account.rub.beneficiary_name]
+[requisites.bank.account.rub.beneficiary.name]
 other = "Beneficiary Name"
 
-[requisites.bank.account.rub.beneficiary_account]
+[requisites.bank.account.rub.beneficiary.account]
 other = "Beneficiary Account"
 
-[requisites.bank.account.rub.beneficiary_bank]
+[requisites.bank.account.rub.beneficiary.bank]
 other = "Beneficiary Bank"
 
 [requisites.bank.account.rub.bic]
@@ -256,8 +263,8 @@ other = "ITN"
 [requisites.bank.account.rub.kpp]
 other = "IEC"
 
-[requisites.bank.account.rub.correspondent_account]
+[requisites.bank.account.rub.correspondent.account]
 other = "Correspondent Account"
 
 [requisites.bank.account.rub.target]
-other = "Purpose of Payment"
+other = "Payment Details"

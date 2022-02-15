@@ -2,18 +2,18 @@
 {{ $height := ((.Get 1) | default "300") }}
 {{ $r := (.Inner | chomp) }}
 {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
-{{ $fn := ((printf "sc_chart_%s" $id) | safeJS) }}
+{{ $fn := ((printf "sc_chart_%s" ($id)) | safeJS) }}
 
-<div class="shortcode shortcode-{{ .Name }} mb-3">
-  <canvas id="sc-chart-{{ $id }}"></canvas>
+<div class="shortcode shortcode-{{ (.Name) }} mb-3">
+  <canvas id="sc-chart-{{ ($id) }}"></canvas>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js" onload="{{ $fn }}();" crossorigin="anonymous" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js" onload="{{ ($fn) }}();" crossorigin="anonymous" async></script>
 <script>
-  function {{ $fn }}() {
-    const $el = document.getElementById('sc-chart-{{ $id }}');
+  function {{ ($fn) }}() {
+    const $el = document.getElementById('sc-chart-{{ ($id) }}');
     const $ctx = $el.getContext('2d');
-    const $options = {{ ($r | safeJS) }};
-    $el.setAttribute('style', 'width: {{ $width }}%; height: {{ $height }}px; margin: 0 auto;');
+    const $options = {{ (($r) | safeJS) }};
+    $el.setAttribute('style', 'width: {{ ($width) }}%; height: {{ ($height) }}px; margin: 0 auto;');
     new Chart($ctx, $options);
   }
 </script>

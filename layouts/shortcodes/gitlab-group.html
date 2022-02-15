@@ -1,6 +1,6 @@
 {{ $group := ((.Get 0) | default "") }}
 {{ $view := ((.Get 1) | default "") }}
-{{ $token := $.Site.Params.api.gitlab.token }}
+{{ $token := $.Site.Data.api.gitlab.token }}
 {{ $url := "https://gitlab.com/api/v4" }}
 {{ $data := getJSON $url "/groups/" $group "?access_token=" $token }}
 

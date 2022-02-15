@@ -1,6 +1,6 @@
 {{ $user := ((.Get 0) | default "") }}
 {{ $gist := ((.Get 1) | default "") }}
-{{ $file := "" }}
+{{ $file := ("") }}
 
 {{ if ((len (.Params)) | eq 3) }}
     {{ $file = ((printf "?file=%s" (.Get 2)) | default "") }}
