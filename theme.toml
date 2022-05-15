@@ -2,11 +2,11 @@ name = "UI Shortcodes"
 license = "MIT"
 licenselink = "https://github.com/pkgstore/hugo-ui-shortcodes/blob/main/LICENSE"
 description = "WebSite User Interface"
-homepage = "https://z17.dev"
+homepage = "https://metacraft.dev"
 tags = ["website", "responsive", "multilingual", "mobile"]
 features = ["posts", "shortcodes", "comments"]
 min_version = "0.82.0"
 
 [author]
-  name = "z17 Dev"
-  homepage = "https://z17.dev"
+  name = "MetaCraft Development"
+  homepage = "https://metacraft.dev"
